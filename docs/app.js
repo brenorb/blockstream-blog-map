@@ -1,6 +1,6 @@
 /* Blockstream Blog Map: canvas renderer for posts (glowing dots) and generated ideas (gold stars). */
 (async function () {
-  const data = await (await fetch("data.json")).json();
+  const data = await (await fetch("data.json", { cache: "no-cache" })).json();
   const posts = data.posts;
   const ghosts = data.ghosts || [];
   const clusters = data.clusters;
