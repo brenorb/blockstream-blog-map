@@ -1,0 +1,140 @@
+[
+ {
+  "id": "idea-7",
+  "region": "Spot 1 marked by hand on the map",
+  "title": "Writing a Quantum-Safe Spending Path in Simplicity",
+  "description": "A hands-on tutorial: lock Liquid coins in a Simplicity program with two spending paths, a normal Schnorr key today and a hash-based backup key for a post-quantum future.",
+  "lede": "This tutorial uses the Simplicity tools released with the Liquid mainnet launch. We write a program with two branches. The first checks an ordinary Schnorr signature, the way most coins are spent today. The second checks a one-time hash-based signature, built only from SHA-256 calls, and is meant to be used if elliptic curve keys ever become unsafe. We compile the program, commit to it in a Liquid address, fund it, and spend it through each branch. Along the way we look at how Simplicity's combinators express the branch, how the program's cost is bounded before it runs, and how big the witness gets. The same structure works for a vault with a recovery delay. The Simplicity tooling released with mainnet makes this a short exercise.",
+  "tags": [
+   "Simplicity",
+   "Tutorial",
+   "Liquid Network",
+   "Quantum"
+  ],
+  "why": "Closest of all drafts to the void, but not a new topic: Blockstream Research already demonstrated quantum-resistant signing with Simplicity on Liquid. This would be the hands-on tutorial that post doesn't have.",
+  "picked_by": "hand",
+  "mark": {
+   "x": -0.7116386792543419,
+   "y": -0.25907414286033725,
+   "r": 0.1276
+  },
+  "lands_off": 0.1178,
+  "candidates_tried": 11,
+  "method": "Spot marked by hand on a screenshot of the map. Wrote 11 candidate posts mixing the topics around it, embedded each with the same model and placed it on the map. Kept the one that lands closest to the mark (0.118 away, allowed 0.128) and is not a near copy of an existing post (closest real post 0.77, typical twin 0.77)."
+ },
+ {
+  "id": "idea-8",
+  "region": "Spot 2 marked by hand on the map",
+  "title": "Swaps as a Service: A Core Lightning Plugin for Lightning–Liquid Swaps",
+  "description": "The Blockstream app's swaps need providers on the other side. We sketch a Core Lightning plugin that lets any node operator, including one on hosted infrastructure, run a Lightning–Liquid swap service.",
+  "lede": "Each swap between Lightning and Liquid has two sides: the user's wallet and a provider with liquidity in both. Today there are few providers. A Core Lightning plugin could let any node operator become one. The plugin watches for swap requests, locks a Liquid output with the payment hash, and claims the Lightning payment once the user reveals the preimage. This post covers pricing, how to rebalance between layers, risks for the provider, and how a hosted node could run it without a server room. Hosted node services like Greenlight could expose the same plugin, letting operators offer swaps without managing servers. Apps built on Greenlight, such as Breez, could list these providers directly.",
+  "tags": [
+   "Core Lightning",
+   "Plugins",
+   "Swaps",
+   "Liquid Network"
+  ],
+  "why": "Joins CLN plugins, swaps and Lightning infrastructure.",
+  "picked_by": "hand",
+  "mark": {
+   "x": 0.28647304368984594,
+   "y": -0.2950134777128849,
+   "r": 0.045
+  },
+  "lands_off": 0.0204,
+  "candidates_tried": 10,
+  "method": "Spot marked by hand on a screenshot of the map. Wrote 10 candidate posts mixing the topics around it, embedded each with the same model and placed it on the map. Kept the one that lands closest to the mark (0.020 away, allowed 0.045) and is not a near copy of an existing post (closest real post 0.72, typical twin 0.77)."
+ },
+ {
+  "id": "idea-9",
+  "region": "Spot 3 marked by hand on the map",
+  "title": "A Price Oracle for Liquid, Built from the Crypto Data Feed",
+  "description": "Liquid contracts and DEXs need prices they can check. We sketch an oracle that signs prices from the cryptocurrency data feed so Liquid apps and swaps can settle against them.",
+  "lede": "Liquid now has stablecoins, a DEX, and live asset prices in the Blockstream app. What it lacks is a price that a contract can verify. Our cryptocurrency data feed already gathers prices from many exchanges. This post sketches an oracle that signs those prices with Schnorr keys held by several parties, publishes them on a fixed schedule, and lets a Liquid script or a Simplicity contract check the signature before settling. We cover how to pick the sources, how to handle outages, and how the roadmap items like 0-conf change what a fresh price means. Version 2 of the data feed added the low-latency streams this would build on. Other second-layer protocols, from Fuji.Money to Lightning, could read the same prices, which helps interoperability between layers.",
+  "tags": [
+   "Liquid Network",
+   "Liquid Assets",
+   "Oracles",
+   "Data Feed"
+  ],
+  "why": "The data feed and Liquid assets sit near each other with no post joining them.",
+  "picked_by": "hand",
+  "mark": {
+   "x": 0.3082267607283733,
+   "y": 0.10673694403166356,
+   "r": 0.0511
+  },
+  "lands_off": 0.039,
+  "candidates_tried": 10,
+  "method": "Spot marked by hand on a screenshot of the map. Wrote 10 candidate posts mixing the topics around it, embedded each with the same model and placed it on the map. Kept the one that lands closest to the mark (0.039 away, allowed 0.051) and is not a near copy of an existing post (closest real post 0.61, typical twin 0.77)."
+ },
+ {
+  "id": "idea-10",
+  "region": "Spot 4 marked by hand on the map",
+  "title": "Two Keys, One Phone, No Surprises: Safer Multisig with MuSig2 and Hardware Wallets",
+  "description": "Multisig is back in the Blockstream app and MuSig2 is nearly standard. We sketch a mobile setup where a phone and a hardware wallet share one MuSig2 key, and what each device must show so the user can't be tricked.",
+  "lede": "A phone and a hardware wallet can together hold coins that neither can spend alone. With MuSig2, their two keys combine into one Taproot key, so spends are cheaper and look like any single-signature payment. The risk is the one seen in recent smart contract hacks: signers approve what they can't read. This post walks through setup, the two signing rounds between phone and device, nonce safety, recovery when one device is lost, and the screens that keep the user in control, including support for Liquid assets on the hardware side.",
+  "tags": [
+   "MuSig2",
+   "Multisig",
+   "Hardware Wallets",
+   "Blockstream App"
+  ],
+  "why": "MuSig2, the app's multisig, hardware signing and lessons from hacks meet here.",
+  "picked_by": "hand",
+  "mark": {
+   "x": -0.5132959650795353,
+   "y": 0.14395982655751627,
+   "r": 0.0588
+  },
+  "lands_off": 0.0395,
+  "candidates_tried": 5,
+  "method": "Spot marked by hand on a screenshot of the map. Wrote 5 candidate posts mixing the topics around it, embedded each with the same model and placed it on the map. Kept the one that lands closest to the mark (0.040 away, allowed 0.059) and is not a near copy of an existing post (closest real post 0.70, typical twin 0.77)."
+ },
+ {
+  "id": "idea-11",
+  "region": "Spot 5 marked by hand on the map",
+  "title": "Proving the Supply of a Federation: Audits for E-Cash and Sidechains",
+  "description": "A bug can quietly inflate a private ledger. We look at how Fedimint mints and Liquid's peg can prove that no money was created from nothing, without giving up confidentiality.",
+  "lede": "The Zcash Orchard bug showed that a private ledger can hide inflation as well as it hides balances. Federated systems face the same question. A Fedimint mint issues blinded e-cash notes that nobody can link, and Liquid hides amounts with confidential transactions. How does a user know the total issued still matches the bitcoin held? This post compares the tools: range proofs and the public peg balance on Liquid, liability proofs for e-cash mints, and periodic attestations by the federation. We sketch an audit any user could run.",
+  "tags": [
+   "Fedimint",
+   "Liquid Network",
+   "Supply Audit",
+   "Confidential Transactions"
+  ],
+  "why": "E-cash, verifiable supply and Liquid's confidentiality are neighbors with no post linking them.",
+  "picked_by": "hand",
+  "mark": {
+   "x": -0.09357718927736403,
+   "y": 0.118288873091411,
+   "r": 0.04
+  },
+  "lands_off": 0.0244,
+  "candidates_tried": 3,
+  "method": "Spot marked by hand on a screenshot of the map. Wrote 3 candidate posts mixing the topics around it, embedded each with the same model and placed it on the map. Kept the one that lands closest to the mark (0.024 away, allowed 0.040) and is not a near copy of an existing post (closest real post 0.69, typical twin 0.77)."
+ },
+ {
+  "id": "idea-12",
+  "region": "Spot 6 marked by hand on the map",
+  "title": "Check, Don't Trust: Reserves, Messages and Software",
+  "description": "Three things users are often asked to take on faith: an exchange's reserves, a message claiming to be from support, and the software they install. A short guide to checking each.",
+  "lede": "An exchange says it holds your coins. A message says it comes from Blockstream. An app says it was built from its public code. Each claim can be checked. A proof of reserves shows on-chain coins and a liabilities list you can find yourself in. A real announcement is signed with a published key and never asks for your seed. A reproducible build lets anyone confirm the app matches its source. This guide shows how to do each check, and why we fund open-source tools such as the mempool explorer that make checking free. Verification matters most where trust is scarce, in regions bridging the digital divide.",
+  "tags": [
+   "Security",
+   "Proof of Reserves",
+   "Phishing",
+   "Open Source"
+  ],
+  "why": "Between proof of reserves, phishing alerts and open-source support.",
+  "picked_by": "hand",
+  "mark": {
+   "x": 0.030546960883643948,
+   "y": 0.28258297527448506,
+   "r": 0.04
+  },
+  "lands_off": 0.0162,
+  "candidates_tried": 10,
+  "method": "Spot marked by hand on a screenshot of the map. Wrote 10 candidate posts mixing the topics around it, embedded each with the same model and placed it on the map. Kept the one that lands closest to the mark (0.016 away, allowed 0.040) and is not a near copy of an existing post (closest real post 0.69, typical twin 0.77)."
+ }
+]

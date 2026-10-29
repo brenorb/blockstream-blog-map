@@ -1,0 +1,687 @@
+[
+ {
+  "mark": 1,
+  "round": 1,
+  "title": "Post-Quantum Vaults in Simplicity: A Hash-Based Signature Check You Can Prove Correct",
+  "description": "Hash-based signatures are the most conservative post-quantum option, but they are large and easy to get wrong. We sketch a Simplicity contract that verifies one inside a Liquid vault, and show how Simplicity's formal semantics let us prove the check matches its specification.",
+  "tags": [
+   "Simplicity",
+   "Post-Quantum",
+   "Blockstream Research",
+   "Liquid Network"
+  ],
+  "lede": "If large quantum computers arrive, Schnorr and ECDSA keys become forgeable, and coins locked to them need a way out. Hash-based signatures such as SPHINCS+ or the smaller schemes we studied for hardware wallets only assume a secure hash function, which is why they are the conservative choice. The cost is size and complexity: a verifier walks hundreds of hash computations, and one off-by-one error breaks security. Simplicity is a good place to write that verifier. Its programs have a formal denotational semantics in Coq, so we can state what a correct verifier is and prove the program meets it, the same way we proved the safegcd bounds used in libsecp256k1. This post builds a vault on Liquid whose spending path checks a hash-based signature in Simplicity, measures its cost in jets, and walks through the proof obligations.",
+  "why": "Simplicity, post-quantum signatures and formal proofs each have posts, but nothing combines them."
+ },
+ {
+  "mark": 1,
+  "round": 1,
+  "title": "From Formal Proof to Running Contract: Verifying Covenants End to End",
+  "description": "Covenant proposals like OP_CAT and OP_CTV are argued about in prose. We show how to state a covenant's intended behavior as a theorem and check it against both a Bitcoin Script version and a Simplicity version.",
+  "tags": [
+   "Covenants",
+   "Simplicity",
+   "Formal Verification",
+   "Blockstream Research"
+  ],
+  "lede": "Every covenant debate ends up asking the same thing: does this script do only what we think it does? Today the answer comes from careful reading and test vectors. Simplicity offers another route. Because every Simplicity program has a precise meaning in the Coq proof assistant, a property such as 'these coins can only move to the vault address or back to the owner after a delay' can be written down as a theorem and proved. We take a vault built with OP_CAT and CHECKSIGFROMSTACK, write the same vault in Simplicity, and prove the Simplicity version safe. Then we compare what each approach leaves to trust: the opcode semantics, the interpreter, the jets. The same method we used to prove the safegcd bounds in libsecp256k1 carries over.",
+  "why": "Covenants, Simplicity and formal verification sit in three separate clusters."
+ },
+ {
+  "mark": 1,
+  "round": 1,
+  "title": "Signing Simplicity Contracts with Post-Quantum Keys on a Hardware Wallet",
+  "description": "What it would take for Jade to hold a hash-based key and sign a spend from a Simplicity contract, and how much of the contract the device can check before it signs.",
+  "tags": [
+   "Simplicity",
+   "Post-Quantum",
+   "Jade",
+   "Signatures"
+  ],
+  "lede": "Two lines of research on this blog meet in one device. On one side, we asked whether hardware wallets can produce post-quantum signatures at all, given their memory and speed. On the other, Simplicity now runs on Liquid mainnet and can express contracts that Script cannot. Put together, a user could lock coins in a Simplicity contract that accepts a hash-based signature, and sign that spend from a Jade. This post looks at the pieces: generating and storing a stateless hash-based key, streaming the signature out over USB, and showing the user what the contract allows. We also look at the verifier's cost on chain and which parts of it are worth a dedicated jet.",
+  "why": "Joins the post-quantum hardware research with Simplicity going live."
+ },
+ {
+  "mark": 2,
+  "round": 1,
+  "title": "Paying in Stablecoins over Lightning: Swapping Liquid Assets at the Point of Sale",
+  "description": "A shop wants dollars, a customer pays over Lightning. We sketch how a submarine swap into a Liquid asset lets a merchant settle in a stablecoin without a custodian or a node of their own.",
+  "tags": [
+   "Lightning Network",
+   "Liquid Assets",
+   "Swaps",
+   "Point of Sale"
+  ],
+  "lede": "Merchants who accept Lightning often want to end the day holding dollars, not bitcoin. Today that means an exchange account. Liquid already carries stablecoins, and swaps between Lightning and Liquid already work in the Blockstream app. Combining them, a point-of-sale app could take a Lightning payment and, in the same flow, swap it into a Liquid stablecoin held by the merchant's own keys. This post walks through the swap: who provides the liquidity, how the hash lock ties the Lightning payment to the Liquid output, how LiquiDEX-style atomic swaps set the price, and what happens if the swap provider disappears halfway.",
+  "why": "Lightning point-of-sale, on-chain swaps and Liquid assets each have posts, but not the combination."
+ },
+ {
+  "mark": 2,
+  "round": 1,
+  "title": "One Balance, Three Layers: How a Wallet Should Route Between Bitcoin, Liquid and Lightning",
+  "description": "Users shouldn't have to pick a layer. We sketch a routing policy for a wallet that holds funds on-chain, on Liquid and in Lightning, and moves them with swaps only when it saves fees.",
+  "tags": [
+   "Lightning Network",
+   "Liquid Network",
+   "Swaps",
+   "Wallets"
+  ],
+  "lede": "The Blockstream app can now hold bitcoin on-chain, on Liquid, and send over Lightning, with swaps in between. That is three balances and a lot of choices for someone who just wants to pay. This post proposes a simple routing policy: keep a small Lightning budget, park savings on-chain, keep a working balance on Liquid, and swap only when a payment needs it. We work through the fees of each path, the time each swap takes, and when a hosted Lightning node like Greenlight makes sense compared to swapping on demand.",
+  "why": "Swaps, Greenlight and Liquid are covered as features; none of the posts asks how a wallet should choose between them."
+ },
+ {
+  "mark": 2,
+  "round": 1,
+  "title": "Issuing an Asset That Pays Out over Lightning",
+  "description": "A Liquid asset issuer pays dividends or coupons today by sending Liquid transactions. We sketch how an issuer could let holders receive those payments over Lightning instead.",
+  "tags": [
+   "Liquid Assets",
+   "Lightning Network",
+   "Issuance"
+  ],
+  "lede": "Issuers on Liquid can distribute payouts to every holder of an asset, but the holder needs a Liquid wallet to receive them. Many users would rather receive over Lightning. This post sketches a payout service: the issuer snapshots holders, each holder registers a Lightning offer signed by the key that holds the asset, and the service pays each offer from a channel funded by the issuer. We look at the privacy cost of linking assets to offers, the fee math for small holders, and how Core Lightning plugins could run the service.",
+  "why": "Liquid asset issuance and Lightning payments meet here."
+ },
+ {
+  "mark": 3,
+  "round": 1,
+  "title": "A Price Oracle for Liquid, Built from the Crypto Data Feed",
+  "description": "Liquid contracts and DEXs need prices they can check. We sketch an oracle that signs prices from the cryptocurrency data feed so Liquid apps and swaps can settle against them.",
+  "tags": [
+   "Liquid Network",
+   "Liquid Assets",
+   "Oracles",
+   "Data Feed"
+  ],
+  "lede": "Liquid now has stablecoins, a DEX, and live asset prices in the Blockstream app. What it lacks is a price that a contract can verify. Our cryptocurrency data feed already gathers prices from many exchanges. This post sketches an oracle that signs those prices with Schnorr keys held by several parties, publishes them on a fixed schedule, and lets a Liquid script or a Simplicity contract check the signature before settling. We cover how to pick the sources, how to handle outages, and how the roadmap items like 0-conf change what a fresh price means.",
+  "why": "The data feed and Liquid assets sit near each other with no post joining them."
+ },
+ {
+  "mark": 3,
+  "round": 1,
+  "title": "Measuring Liquid: Open Data on Assets, Volume and Peg Health",
+  "description": "A proposal for a public dashboard and API that tracks Liquid assets, trading volume, peg-ins and peg-outs from the explorer's data, so builders can see how the network is used.",
+  "tags": [
+   "Liquid Network",
+   "Explorer",
+   "Data",
+   "Liquid Assets"
+  ],
+  "lede": "Builders deciding whether to launch on Liquid ask the same questions: how much is moving, which assets are used, how fast do peg-outs clear? The answers exist in the chain and in the explorer's index, but nobody publishes them in one place. This post proposes an open dataset and dashboard: daily volume per asset where amounts are public, peg-in and peg-out counts and timings, and DEX activity. We discuss what confidential transactions hide and should keep hiding, and how a community like Build On L2 could maintain it.",
+  "why": "Explorer data and the Liquid roadmap have no post about measuring the network."
+ },
+ {
+  "mark": 3,
+  "round": 1,
+  "title": "Order Books Without an Exchange: Relaying Liquid Swap Offers Efficiently",
+  "description": "Atomic swaps on Liquid need a way to find offers. We borrow set reconciliation from Minisketch to sketch a peer-to-peer order relay that any node can run.",
+  "tags": [
+   "Liquid Assets",
+   "Minisketch",
+   "DEX",
+   "P2P"
+  ],
+  "lede": "LiquiDEX and XDEX let two parties swap Liquid assets atomically, but finding the other party still goes through a website. Peer-to-peer order relay would remove that point of control. The problem looks like transaction relay: many nodes, mostly overlapping sets of offers, limited bandwidth. Minisketch solved that for Bitcoin transactions by sending only the differences between two peers' sets. This post sketches the same idea for signed swap offers: what goes in an offer, how offers expire, how to resist spam, and how wallets query the book.",
+  "why": "Minisketch and Liquid DEXs are neighbors on the map but never meet in a post."
+ },
+ {
+  "mark": 4,
+  "round": 1,
+  "title": "What a Multisig Signer Should See: Lessons from Smart Contract Hacks",
+  "description": "Recent multi-signature hacks were not broken cryptography but signers approving what they could not read. We look at what wallets and hardware devices should show before each key signs.",
+  "tags": [
+   "Multisig",
+   "Security",
+   "Hardware Wallets",
+   "MuSig2"
+  ],
+  "lede": "The largest thefts of the last years did not break a signature scheme. They tricked several honest key holders into approving a transaction whose meaning their screens hid. Bitcoin multisig is simpler than an Ethereum contract, but the lesson carries: a signer must see what they sign. This post goes through what that means for the Blockstream app's multisig accounts, for hardware wallets that sign Liquid assets, and for MuSig2, where the final key hides that several people signed at all. We propose a short checklist of what every signer's screen should verify.",
+  "why": "Smart contract risk, multisig in the app, MuSig2 and hardware signing sit around this gap."
+ },
+ {
+  "mark": 4,
+  "round": 1,
+  "title": "MuSig2 in a Mobile Wallet: One Signature, Two Devices",
+  "description": "Multisig is back in the Blockstream app. We sketch how MuSig2 could make its two-of-two accounts cheaper and more private, and what changes for backup and recovery.",
+  "tags": [
+   "MuSig2",
+   "Multisig",
+   "Blockstream App",
+   "Privacy"
+  ],
+  "lede": "A two-of-two account today shows on chain as multisig: two keys, a larger witness, and a clear fingerprint. MuSig2 lets the two parties produce one Schnorr signature for one key, so the spend looks like any single-key Taproot spend. With the new BIPs settled, a mobile wallet could adopt it. This post walks through the signing rounds between the phone and the server or hardware device, how nonces must be handled on a phone, and what a recovery path looks like when the aggregate key hides that two parties exist.",
+  "why": "Multisig in the app and MuSig2 are close neighbors with no joint post."
+ },
+ {
+  "mark": 4,
+  "round": 1,
+  "title": "Simple Scripts, Fewer Bugs: Why Bitcoin Keeps Its Contracts Small",
+  "description": "A short history of contract bugs on other chains, and why Bitcoin's multisig and signature upgrades kept the scripting language narrow.",
+  "tags": [
+   "Security",
+   "Smart Contracts",
+   "Multisig",
+   "Signatures"
+  ],
+  "lede": "Each large smart contract hack is a reminder that expressive code is easy to get wrong. Bitcoin has taken another path: improve the signatures and keep scripts small. Schnorr, MuSig2 and threshold schemes moved complexity into well-studied cryptography instead of into contract code. This post looks at the bugs behind major contract hacks, asks which of them could happen with Bitcoin multisig, and argues for where new expressiveness should go: into signatures, into narrow opcodes like hash-based checks, or into a verifiable language.",
+  "why": "Mixes the security post on contract hacks with the signature research around it."
+ },
+ {
+  "mark": 5,
+  "round": 1,
+  "title": "Proving the Supply of a Federation: Audits for E-Cash and Sidechains",
+  "description": "A bug can quietly inflate a private ledger. We look at how Fedimint mints and Liquid's peg can prove that no money was created from nothing, without giving up confidentiality.",
+  "tags": [
+   "Fedimint",
+   "Liquid Network",
+   "Supply Audit",
+   "Confidential Transactions"
+  ],
+  "lede": "The Zcash Orchard bug showed that a private ledger can hide inflation as well as it hides balances. Federated systems face the same question. A Fedimint mint issues blinded e-cash notes that nobody can link, and Liquid hides amounts with confidential transactions. How does a user know the total issued still matches the bitcoin held? This post compares the tools: range proofs and the public peg balance on Liquid, liability proofs for e-cash mints, and periodic attestations by the federation. We sketch an audit any user could run.",
+  "why": "E-cash, verifiable supply and Liquid's confidentiality are neighbors with no post linking them."
+ },
+ {
+  "mark": 5,
+  "round": 1,
+  "title": "Federated E-Cash on Liquid: Mints That Settle Between Each Other",
+  "description": "Fedimint federations hold bitcoin and issue private e-cash. We sketch how separate mints could settle between each other on Liquid with confidential amounts.",
+  "tags": [
+   "Fedimint",
+   "E-Cash",
+   "Liquid Network",
+   "Federations"
+  ],
+  "lede": "Community mints are small by design: a group of guardians that users know. That makes paying between two mints a problem. Lightning is one answer; Liquid is another. A mint's federation could hold part of its reserves as L-BTC, and two mints could settle net balances with a single confidential Liquid transaction. This post walks through the trust model, why federations-of-federations are worth the extra complexity, and how derivative contracts on Liquid could let a mint hedge its float.",
+  "why": "Fedimint, sidechains and Liquid federation posts surround this spot."
+ },
+ {
+  "mark": 5,
+  "round": 1,
+  "title": "Confidential by Default: What Businesses Need from a Federated Chain",
+  "description": "Businesses avoid public ledgers because they expose trading data. We look at how confidential transactions, federated block signing and derivatives on Liquid meet that need, and what is still missing.",
+  "tags": [
+   "Confidential Transactions",
+   "Liquid Network",
+   "Federations",
+   "Business"
+  ],
+  "lede": "A trading desk cannot publish its positions, and a public blockchain does exactly that. Confidential transactions hide amounts and asset types, federated signing gives predictable blocks, and peer-to-peer derivatives settle without a broker. This post looks at what businesses on Liquid actually need: auditors who can see amounts while competitors can't, supply checks that hold under privacy, and a clear story about what the federation can and cannot do.",
+  "why": "Sits between confidentiality, derivatives and federation posts."
+ },
+ {
+  "mark": 6,
+  "round": 1,
+  "title": "Don't Trust the Message, Check the Chain: A User's Guide to Verifying Claims",
+  "description": "Scam messages, fake support and unbacked custodians all ask you to trust. We show how a regular user can check signed announcements, proof of reserves and transactions with an explorer instead.",
+  "tags": [
+   "Security",
+   "Proof of Reserves",
+   "Explorer",
+   "Privacy"
+  ],
+  "lede": "Phishing messages claim to come from Blockstream. Custodians claim to hold your coins. Support accounts claim they need your seed. Each claim can be checked without trusting the sender. This post is a practical guide: how to verify a signed announcement, how to read a proof of reserves, how to look up a transaction in the explorer and, on Liquid, how to reveal a confidential amount you are entitled to see. None of it needs special software.",
+  "why": "Phishing alerts, proof of reserves and the explorer sit together here without a guide connecting them."
+ },
+ {
+  "mark": 6,
+  "round": 1,
+  "title": "Proof of Reserves You Can Check from Your Phone",
+  "description": "The proof of reserves standard lets an exchange show its coins. We sketch how a wallet could check one automatically, with privacy preserved for the exchange's other users.",
+  "tags": [
+   "Proof of Reserves",
+   "Wallets",
+   "Privacy",
+   "Security"
+  ],
+  "lede": "A proof of reserves is only useful if people check it. Today that means downloading files and running scripts. A wallet could do it in the background: fetch the custodian's signed proof, confirm the coins exist with the explorer's API, and check the user's own balance is included in the liabilities without learning anyone else's. This post sketches that flow, the privacy options that keep it from leaking your balance, and what to show the user when a proof fails.",
+  "why": "Joins the proof of reserves standard with wallet privacy and the explorer."
+ },
+ {
+  "mark": 6,
+  "round": 1,
+  "title": "Who Watches the Hashrate? Open Tools for Miners and Users",
+  "description": "From ASIC firmware to block templates, miners rely on tools they can't inspect. We sketch open, verifiable tools that let miners and ordinary users check what the network is doing.",
+  "tags": [
+   "Mining",
+   "Security",
+   "Open Source",
+   "Explorer"
+  ],
+  "lede": "Most miners run firmware they can't read and build blocks from templates they didn't choose. Users see the result in an explorer but rarely the cause. This post proposes a set of open tools: firmware that reports what it hashes, a public feed of who proposes block templates, and explorer views that highlight unusual blocks. We discuss how this connects to the ASIC roadmap, to sponsorship of open-source explorers, and to the security alerts users should trust.",
+  "why": "Mining, open-source explorers and security alerts are scattered around this spot."
+ },
+ {
+  "mark": 1,
+  "title": "Simplicity Jets for Post-Quantum Signatures",
+  "description": "Simplicity is now live on Liquid. We look at which post-quantum signature checks could become Simplicity jets, and how each jet's formal specification keeps the fast path honest.",
+  "tags": [
+   "Simplicity",
+   "Liquid Network",
+   "Post-Quantum",
+   "Jets"
+  ],
+  "lede": "Simplicity programs run on Liquid today, and most of their speed comes from jets: native implementations of common functions such as SHA-256 or Schnorr verification, each backed by a formal specification in Coq that it must match. The question for the next set of jets is what users will need in ten years. Post-quantum signatures are a strong candidate. Hash-based schemes need only SHA-256, which Simplicity already has as a jet, while lattice schemes would need new arithmetic jets. This post walks through the Simplicity type system, how a jet is specified and tested against its Simplicity definition, and sketches a verifier for a compact hash-based signature written in plain Simplicity first, then accelerated.",
+  "why": "Puts Simplicity's jets next to the post-quantum signature research.",
+  "round": 2
+ },
+ {
+  "mark": 1,
+  "title": "Writing a Quantum-Safe Spending Path in Simplicity",
+  "description": "A hands-on tutorial: lock Liquid coins in a Simplicity program with two spending paths, a normal Schnorr key today and a hash-based backup key for a post-quantum future.",
+  "tags": [
+   "Simplicity",
+   "Tutorial",
+   "Liquid Network",
+   "Quantum"
+  ],
+  "lede": "This tutorial uses the Simplicity tools released with the Liquid mainnet launch. We write a program with two branches. The first checks an ordinary Schnorr signature, the way most coins are spent today. The second checks a one-time hash-based signature, built only from SHA-256 calls, and is meant to be used if elliptic curve keys ever become unsafe. We compile the program, commit to it in a Liquid address, fund it, and spend it through each branch. Along the way we look at how Simplicity's combinators express the branch, how the program's cost is bounded before it runs, and how big the witness gets.",
+  "why": "Tutorial-style mix of Simplicity tooling and post-quantum backup keys.",
+  "round": 2
+ },
+ {
+  "mark": 1,
+  "title": "Formal Methods at Blockstream: From safegcd to Simplicity to Post-Quantum Proofs",
+  "description": "A tour of how Blockstream Research uses machine-checked proofs, from libsecp256k1's constant-time inverse to Simplicity's semantics, and where proofs could help the post-quantum transition.",
+  "tags": [
+   "Formal Verification",
+   "Simplicity",
+   "Cryptography",
+   "Blockstream Research"
+  ],
+  "lede": "Proofs checked by a computer are a recurring thread in our research. The safegcd work proved termination bounds for the modular inverse in libsecp256k1. Simplicity was designed so that every program has a formal meaning, and its jets are checked against their specifications. Post-quantum signatures bring new code that will guard real money, and new chances for subtle bugs. This post explains what a machine-checked proof gives you and what it does not, compares Coq and other tools we use, and lists the post-quantum components where a proof would be most valuable.",
+  "why": "Joins the formal proof work with Simplicity and post-quantum research.",
+  "round": 2
+ },
+ {
+  "mark": 2,
+  "title": "A Lightning Node in the Cloud That Also Holds Liquid Assets",
+  "description": "Greenlight runs a user's Lightning node in the cloud while the user keeps the keys. We sketch extending it with Liquid swaps so the same hosted node can receive in Lightning and hold stablecoins.",
+  "tags": [
+   "Greenlight",
+   "Lightning Network",
+   "Liquid Assets",
+   "Swaps"
+  ],
+  "lede": "Greenlight separates running a Lightning node from holding its keys: Blockstream operates the node, the user's device signs. Many of the apps built on it are payment apps whose users would like to hold dollars between payments. Liquid swaps already move value between Lightning and Liquid in the Blockstream app. This post sketches a Greenlight extension where the hosted node can trigger a swap into a Liquid asset on the user's behalf, signed by the same device. We cover the signer protocol changes, liquidity, and how apps like Breez could expose it.",
+  "why": "Greenlight, swaps and Liquid assets surround this spot.",
+  "round": 2
+ },
+ {
+  "mark": 2,
+  "title": "LApps for Liquid: Paying for Digital Goods with Assets Instead of Satoshis",
+  "description": "Lightning Charge made small paid apps easy. We revisit the idea with today's tools: a point-of-sale and paywall kit that accepts Lightning and settles into a Liquid asset.",
+  "tags": [
+   "Lightning Charge",
+   "Point of Sale",
+   "Liquid Assets",
+   "Greenlight"
+  ],
+  "lede": "The week of LApps showed how little code a Lightning payment needs: a jukebox, a WordPress paywall, a file store, a point-of-sale terminal. Those apps priced in satoshis and settled into a node the merchant ran. Today a merchant could use a hosted node through Greenlight and convert receipts into a Liquid stablecoin with a swap. This post rebuilds Nanopos on that stack, shows the merchant flow end to end, and compares the costs with the original self-hosted setup.",
+  "why": "Revisits Lightning Charge apps with Greenlight and Liquid assets.",
+  "round": 2
+ },
+ {
+  "mark": 2,
+  "title": "Swaps as a Service: Running a Lightning–Liquid Swap Provider on Core Lightning",
+  "description": "The Blockstream app's swaps need providers on the other side. We sketch a Core Lightning plugin that lets anyone run a Lightning–Liquid swap service.",
+  "tags": [
+   "Core Lightning",
+   "Plugins",
+   "Swaps",
+   "Liquid Network"
+  ],
+  "lede": "Each swap between Lightning and Liquid has two sides: the user's wallet and a provider with liquidity in both. Today there are few providers. A Core Lightning plugin could let any node operator become one. The plugin watches for swap requests, locks a Liquid output with the payment hash, and claims the Lightning payment once the user reveals the preimage. This post covers pricing, how to rebalance between layers, risks for the provider, and how a hosted node could run it without a server room.",
+  "why": "Joins CLN plugins, swaps and Lightning infrastructure.",
+  "round": 2
+ },
+ {
+  "mark": 3,
+  "title": "Signed Prices for Everyone: Turning the Crypto Data Feed into an Open Oracle",
+  "description": "Our cryptocurrency data feed already aggregates prices from many exchanges. We sketch publishing signed snapshots of it so Liquid contracts, wallets and explorers can all check the same prices.",
+  "tags": [
+   "Data Feed",
+   "Oracles",
+   "Liquid Network",
+   "APIs"
+  ],
+  "lede": "The cryptocurrency data feed collects trades and order books from dozens of exchanges and delivers them to institutions in real time. Version 2 added more venues and lower latency. Most users never see it. This post proposes publishing a slice of it openly: a signed price snapshot every minute for the main pairs, available through a simple API and a Liquid-readable format. A Liquid contract could check the signature before settling a derivative, a wallet could show a price it can verify, and the explorer could show fiat values that match. We look at signing keys, outages, and manipulation resistance.",
+  "why": "Pulls the data feed toward Liquid's need for prices.",
+  "round": 2
+ },
+ {
+  "mark": 3,
+  "title": "Building on Liquid with Market Data: A Developer Guide to Prices, Assets and APIs",
+  "description": "Developers building on Liquid need asset data and prices. A guide to the APIs that exist, from the explorer to the data feed, and what a community toolkit could add.",
+  "tags": [
+   "Developers",
+   "APIs",
+   "Liquid Network",
+   "Data Feed"
+  ],
+  "lede": "Builders who join communities like Build On L2 often start with the same questions: where do I get the list of Liquid assets, their metadata, their prices, and the history of their issuance? Pieces of the answer live in different places: the explorer's API, the asset registry, the data feed. This post maps them out with examples, points out the gaps, and proposes a small open toolkit that combines them for app developers.",
+  "why": "Developer tools, data feed and Liquid assets meet here.",
+  "round": 2
+ },
+ {
+  "mark": 6,
+  "title": "How to Tell a Real Announcement from a Scam",
+  "description": "Scammers copy our name and logo. A short guide to what Blockstream will never ask you, how to check a signed message, and what a real proof of reserves looks like compared to a promise.",
+  "tags": [
+   "Security",
+   "Phishing",
+   "Proof of Reserves",
+   "Help"
+  ],
+  "lede": "Every few months someone receives a message that claims to come from Blockstream or Liquid support and asks for a seed, a payment or a download. We will never ask for any of those. This guide collects what we've learned from those reports: how to check that an announcement was signed by a key we published, why a support agent never needs your recovery phrase, and how to tell a real proof of reserves, which you can verify yourself, from a screenshot that just claims one. If you think you've been targeted, here is where to get help.",
+  "why": "Joins the phishing alerts with proof of reserves and help resources.",
+  "round": 2
+ },
+ {
+  "mark": 6,
+  "title": "Trust, but Verify: Reserves, Firmware and Software You Can Check",
+  "description": "Bitcoin works because users can check instead of trust. We list the places that still ask for trust, from exchange reserves to mining firmware to wallet apps, and what verification looks like for each.",
+  "tags": [
+   "Proof of Reserves",
+   "Open Source",
+   "Mining",
+   "Security"
+  ],
+  "lede": "Bitcoin's rule is simple: don't trust, verify. Users can verify the chain, but around it many things are still taken on faith. Exchanges say they hold reserves. Miners run firmware they cannot read. Wallets ship binaries most people never check. This post walks through each: the proof of reserves standard, open mining firmware and the ASIC roadmap, reproducible builds, and funding open tools like mempool explorers so that verification stays free.",
+  "why": "Proof of reserves, ASIC roadmap and FOSS sponsorship surround this spot.",
+  "round": 2
+ },
+ {
+  "mark": 6,
+  "title": "A Privacy and Safety Checkup for Your Bitcoin Wallet",
+  "description": "Ten minutes of settings that make a wallet safer: privacy options, scam awareness, and checking that a custodian actually holds your coins.",
+  "tags": [
+   "Privacy",
+   "Security",
+   "Wallets",
+   "Proof of Reserves"
+  ],
+  "lede": "Most losses come from small habits, not broken cryptography. This checkup goes through the privacy options in the Blockstream app, such as connecting to your own node and using Tor, how to recognize the phishing messages we keep seeing, and how to check a custodian's proof of reserves if you keep some coins on an exchange. Each step takes a minute and none needs technical knowledge.",
+  "why": "Privacy options, phishing and reserves are neighbors here.",
+  "round": 2
+ },
+ {
+  "mark": 4,
+  "title": "What Your Hardware Wallet Should Show Before a MuSig2 Signature",
+  "description": "MuSig2 makes a two-of-two look like one key. That is good for privacy and bad for a signer who can't see who else is signing. We sketch what a hardware wallet and a mobile app should display.",
+  "tags": [
+   "MuSig2",
+   "Hardware Wallets",
+   "Multisig",
+   "Security"
+  ],
+  "lede": "Multisig is back in the Blockstream app, and MuSig2 is ready with two new BIPs. With MuSig2, several keys combine into one, and the chain sees a single signature. The signer's device sees a little more, but only if the software shows it. This post proposes what a hardware wallet should display before contributing a partial signature: the participants' keys, the aggregate key, the outputs and amounts, and a warning when the message is not a transaction. The lesson comes from recent smart contract hacks, where signers approved what their screens hid.",
+  "why": "Joins MuSig2, the app's multisig and hardware signing.",
+  "round": 2
+ },
+ {
+  "mark": 1,
+  "title": "Threshold Signatures Inside Simplicity: FROST and ROAST as Contract Building Blocks",
+  "description": "FROST and ROAST let a group sign as one Schnorr key. We sketch Simplicity contracts that treat a threshold key as one branch of a richer policy, with a hash-based fallback for a post-quantum future.",
+  "tags": [
+   "Simplicity",
+   "FROST",
+   "Threshold Signatures",
+   "Quantum"
+  ],
+  "lede": "Threshold Schnorr signatures such as FROST, with ROAST to keep signing robust when some signers are offline, let a group spend from what looks like an ordinary key. Simplicity lets a contract express rules that Script cannot. Combining them gives contracts where the common case is a cheap threshold signature and the unusual cases are spelled out precisely: a recovery delay, a spending limit, or a hash-based key that takes over if elliptic curves are ever broken. This post walks through the Simplicity program, the distributed key generation behind the threshold key, and the cost of each branch.",
+  "why": "Threshold signatures, Simplicity and the quantum fallback surround this void.",
+  "round": 3
+ },
+ {
+  "mark": 1,
+  "title": "Key Aggregation Meets Formal Contracts: MuSig2 Policies in Simplicity",
+  "description": "MuSig2 hides a multisig behind one key, but the policy around it still lives in Script. We look at writing that policy in Simplicity instead, where it can be proven correct.",
+  "tags": [
+   "MuSig2",
+   "Simplicity",
+   "Signatures",
+   "Formal Verification"
+  ],
+  "lede": "A MuSig2 key looks like any other Taproot key, and most spends use it. The interesting part is what happens when the signers can't agree: timelocks, backup keys, and recovery paths. Today those paths are written in Script or Miniscript. Simplicity offers a language where such a policy has a formal meaning, so we can prove, for example, that coins cannot move without either all signers or a 90-day delay. This post writes a MuSig2 wallet's fallback policy in Simplicity, compares it with the Miniscript version, and discusses which signature schemes Simplicity jets should support next, including post-quantum ones.",
+  "why": "Joins MuSig2 and Simplicity with a hint of post-quantum planning.",
+  "round": 3
+ },
+ {
+  "mark": 2,
+  "title": "A Swap Provider Plugin for Hosted Lightning Nodes",
+  "description": "Greenlight hosts a user's Lightning node while the user keeps the keys. We sketch a Core Lightning plugin that lets such a hosted node act as a Lightning–Liquid swap provider, so swaps don't depend on a few big services.",
+  "tags": [
+   "Core Lightning",
+   "Greenlight",
+   "Swaps",
+   "Liquid Network"
+  ],
+  "lede": "Swaps between Lightning and Liquid let wallets move value between layers, but each swap needs a provider with liquidity on both sides, and there are only a few. Core Lightning's plugin system makes it possible for any node to offer swaps: watch for requests, lock a Liquid output to the payment hash, claim the Lightning payment once the preimage appears. Greenlight runs nodes in the cloud while users hold keys, so a plugin there could turn many small hosted nodes into providers. This post covers the plugin, the signer changes it needs, pricing and rebalancing, and what a Breez-style app would show its users.",
+  "why": "Combines CLN plugins, Greenlight and Liquid swaps, the topics on either side of this spot.",
+  "round": 3
+ },
+ {
+  "mark": 3,
+  "title": "Liquid from Space: Broadcasting Liquid Blocks and Asset Data over Blockstream Satellite",
+  "description": "Blockstream Satellite already broadcasts Bitcoin blocks to anyone with a dish. We sketch adding Liquid blocks and asset registry data, so traders and issuers in poorly connected regions can follow Liquid without the internet.",
+  "tags": [
+   "Blockstream Satellite",
+   "Liquid Network",
+   "Liquid Assets",
+   "Broadcast"
+  ],
+  "lede": "Blockstream Satellite sends the Bitcoin blockchain from orbit to every continent, free to receive with a small dish. Liquid now carries stablecoins, securities and tokenized bonds used in places where internet access can be unreliable or censored. This post sketches a Liquid channel on the satellite: one-minute Liquid blocks, the asset registry, and signed price updates, all fit into the existing bandwidth with compact encoding. We look at what a receiving node can verify on its own, how a user could still send transactions through a mesh or SMS uplink, and what the issuers who chose Liquid would gain.",
+  "why": "Liquid assets and Satellite are both near this spot, and no post connects them.",
+  "round": 3
+ },
+ {
+  "mark": 3,
+  "title": "Tokenized Bonds Need Reliable Data: Satellite Broadcast for Liquid Securities",
+  "description": "Securities on Liquid need holders to see coupons, corporate actions and prices. We look at using Blockstream Satellite to deliver that data where internet access is limited.",
+  "tags": [
+   "Liquid Securities",
+   "Blockstream Satellite",
+   "Liquid Network",
+   "Data"
+  ],
+  "lede": "When a national securities operator or a government issues bonds on Liquid, its holders need more than the chain: coupon schedules, notices and prices. In many regions those arrive over unreliable connections. Blockstream Satellite has broadcast Bitcoin data to the world for years. This post proposes a feed for Liquid securities: signed issuer notices and asset updates sent over satellite, received with cheap hardware, and checked against the Liquid chain.",
+  "why": "Liquid securities and Satellite meet here.",
+  "round": 3
+ },
+ {
+  "mark": 6,
+  "title": "Verify Everything: A Checklist from Phishing Messages to Mining Firmware",
+  "description": "Bitcoin asks you to verify instead of trust. We list the places where users still trust blindly, from support messages and exchange reserves to wallet binaries and mining firmware, and how to check each one.",
+  "tags": [
+   "Security",
+   "Proof of Reserves",
+   "Phishing",
+   "Open Source"
+  ],
+  "lede": "Don't trust, verify. Users can verify the blockchain, but many other things around it are taken on faith. A message claims to come from Blockstream support. An exchange claims to hold reserves. A wallet app claims to be built from its published code. A miner runs firmware nobody can read. This checklist goes through each: how to check a signed announcement and ignore unsolicited messages, how to read a proof of reserves, how to verify a reproducible build, and why funding open-source tools such as mempool explorers keeps verification free for everyone.",
+  "why": "Phishing alerts, proof of reserves, open-source sponsorship and the ASIC roadmap surround this spot.",
+  "round": 3
+ },
+ {
+  "mark": 4,
+  "title": "Two Keys, One Phone, No Surprises: Safer Multisig with MuSig2 and Hardware Wallets",
+  "description": "Multisig is back in the Blockstream app and MuSig2 is nearly standard. We sketch a mobile setup where a phone and a hardware wallet share one MuSig2 key, and what each device must show so the user can't be tricked.",
+  "tags": [
+   "MuSig2",
+   "Multisig",
+   "Hardware Wallets",
+   "Blockstream App"
+  ],
+  "lede": "A phone and a hardware wallet can together hold coins that neither can spend alone. With MuSig2, their two keys combine into one Taproot key, so spends are cheaper and look like any single-signature payment. The risk is the one seen in recent smart contract hacks: signers approve what they can't read. This post walks through setup, the two signing rounds between phone and device, nonce safety, recovery when one device is lost, and the screens that keep the user in control, including support for Liquid assets on the hardware side.",
+  "why": "MuSig2, the app's multisig, hardware signing and lessons from hacks meet here.",
+  "round": 3
+ },
+ {
+  "mark": 1,
+  "title": "Writing a Quantum-Safe Spending Path in Simplicity",
+  "description": "A hands-on Simplicity tutorial: build a Liquid program with two spending paths, a normal Schnorr key today and a hash-based backup key for a post-quantum future, and inspect it with the Simplicity tools.",
+  "tags": [
+   "Simplicity",
+   "Tutorial",
+   "Liquid Network",
+   "Smart Contracts"
+  ],
+  "lede": "This tutorial uses the Simplicity tools released with the Liquid mainnet launch. We write a program with two branches. The first checks an ordinary Schnorr signature, the way most coins are spent today. The second checks a one-time hash-based signature, built only from SHA-256 calls, and is meant to be used if elliptic curve keys ever become unsafe. We compile the program, commit to it in a Liquid address, fund it, and spend it through each branch. Along the way we look at how Simplicity's combinators express the branch, how the program's cost is bounded before it runs, and how big the witness gets. Simplicity has no loops and no unbounded recursion, so the hash chain must be unrolled; we show how its case and composition combinators make that tidy, and how the program's Merkle root lets unused branches stay hidden.",
+  "why": "Tutorial-style mix of Simplicity tooling and post-quantum backup keys.",
+  "round": 4
+ },
+ {
+  "mark": 1,
+  "title": "Your First Simplicity Contract with a Quantum Backup Key",
+  "description": "Simplicity is live on Liquid. In this walkthrough we write, compile and spend a small Simplicity program whose backup branch uses a one-time hash-based signature.",
+  "tags": [
+   "Simplicity",
+   "Tutorial",
+   "Liquid Network",
+   "Quantum"
+  ],
+  "lede": "Simplicity programs are built from a handful of combinators: composition, case, pairs, and witnesses, with jets for heavy work like SHA-256 and Schnorr checks. That small core is enough to write useful contracts, and this walkthrough builds one. The main branch accepts a Schnorr signature. The backup branch accepts a Lamport-style one-time signature, which is just a list of SHA-256 preimages and stays safe even against quantum computers. We compile the program, commit to it in a Liquid address, and spend it both ways, then look at the program's cost bounds and how unused branches are pruned from the witness.",
+  "why": "A Simplicity tutorial with a post-quantum twist.",
+  "round": 4
+ },
+ {
+  "mark": 2,
+  "title": "Swaps as a Service: A Core Lightning Plugin for Lightning–Liquid Swaps",
+  "description": "The Blockstream app's swaps need providers on the other side. We sketch a Core Lightning plugin that lets any node operator, including one on hosted infrastructure, run a Lightning–Liquid swap service.",
+  "tags": [
+   "Core Lightning",
+   "Plugins",
+   "Swaps",
+   "Liquid Network"
+  ],
+  "lede": "Each swap between Lightning and Liquid has two sides: the user's wallet and a provider with liquidity in both. Today there are few providers. A Core Lightning plugin could let any node operator become one. The plugin watches for swap requests, locks a Liquid output with the payment hash, and claims the Lightning payment once the user reveals the preimage. This post covers pricing, how to rebalance between layers, risks for the provider, and how a hosted node could run it without a server room. Hosted node services like Greenlight could expose the same plugin, letting operators offer swaps without managing servers.",
+  "why": "Joins CLN plugins, swaps and Lightning infrastructure.",
+  "round": 4
+ },
+ {
+  "mark": 2,
+  "title": "Becoming a Swap Provider: Liquidity, Pricing and Risk for Lightning–Liquid Swaps",
+  "description": "What it takes to run the other side of a Lightning–Liquid swap: how much liquidity you need, how to price it, and what can go wrong, with a Core Lightning plugin as the reference.",
+  "tags": [
+   "Swaps",
+   "Core Lightning",
+   "Liquid Network",
+   "Lightning Infrastructure"
+  ],
+  "lede": "Swaps between Lightning and Liquid in the Blockstream app rely on providers who hold liquidity on both layers. This post is for node operators who want to become one. We estimate the capital needed for a given volume, how fees should cover rebalancing and on-chain costs, and the risks: stuck swaps, griefing, and price moves while a swap is pending. The reference implementation is a Core Lightning plugin that can run on a home node or on scalable non-custodial infrastructure such as Greenlight.",
+  "why": "Swap infrastructure between the Lightning apps and Greenlight.",
+  "round": 4
+ },
+ {
+  "mark": 3,
+  "title": "Liquid for Places with Bad Internet",
+  "description": "Liquid's issuers and users include regions with unreliable connections. We look at what it would take to follow and use Liquid offline: satellite broadcast of blocks, compact asset data, and wallets that sync rarely.",
+  "tags": [
+   "Liquid Network",
+   "Liquid Assets",
+   "Connectivity",
+   "Blockstream Satellite"
+  ],
+  "lede": "Tokenized bonds, stablecoins and gaming assets on Liquid reach users in places where internet access is slow, expensive or filtered. A Liquid wallet today assumes a live connection to an Electrum server. This post looks at alternatives: receiving Liquid blocks and the asset registry over Blockstream Satellite, compact proofs so a wallet can sync once a week, and sending transactions through SMS or mesh gateways. We weigh the bandwidth, the trust each option adds, and which Liquid members would use it first.",
+  "why": "Less satellite, more Liquid than the first attempt.",
+  "round": 4
+ },
+ {
+  "mark": 3,
+  "title": "Liquid Asset Data over Satellite: A Proposal for Issuers",
+  "description": "Issuers on Liquid publish asset metadata and notices online. We propose also broadcasting them over Blockstream Satellite so holders anywhere can receive and verify them.",
+  "tags": [
+   "Liquid Assets",
+   "Issuance",
+   "Liquid Network",
+   "Satellite"
+  ],
+  "lede": "Every Liquid asset has an issuer, a registry entry and, for securities, a stream of notices: coupons, splits, redemptions. Holders get them through websites and APIs. This post proposes a broadcast channel: issuers sign updates, a relay bundles them, and Blockstream Satellite sends them alongside Bitcoin blocks. A holder's wallet verifies the signatures against the asset's issuance data on Liquid. We cover the message format, size limits, and how the AMP platform could publish to it automatically.",
+  "why": "Liquid assets with a light touch of satellite.",
+  "round": 4
+ },
+ {
+  "mark": 6,
+  "title": "Check, Don't Trust: Reserves, Messages and Software",
+  "description": "Three things users are often asked to take on faith: an exchange's reserves, a message claiming to be from support, and the software they install. A short guide to checking each.",
+  "tags": [
+   "Security",
+   "Proof of Reserves",
+   "Phishing",
+   "Open Source"
+  ],
+  "lede": "An exchange says it holds your coins. A message says it comes from Blockstream. An app says it was built from its public code. Each claim can be checked. A proof of reserves shows on-chain coins and a liabilities list you can find yourself in. A real announcement is signed with a published key and never asks for your seed. A reproducible build lets anyone confirm the app matches its source. This guide shows how to do each check, and why we fund open-source tools such as the mempool explorer that make checking free.",
+  "why": "Between proof of reserves, phishing alerts and open-source support.",
+  "round": 4
+ },
+ {
+  "mark": 6,
+  "title": "When Someone Asks You to Trust Them",
+  "description": "Exchanges, support agents and apps all ask for trust. A practical guide for users on proof of reserves, spotting fake support messages, and verifying downloads.",
+  "tags": [
+   "Proof of Reserves",
+   "Phishing",
+   "Security",
+   "Users"
+  ],
+  "lede": "Scammers, failed exchanges and fake apps all rely on the same thing: users who can't check. This guide is for those users. It explains what a proof of reserves is and how to confirm your balance is counted, how to recognize a fake Blockstream or Liquid support message and where to report it, and how to check that a wallet download is genuine. If something has already gone wrong, it lists where to get help.",
+  "why": "User-facing guide between the help, phishing and reserves posts.",
+  "round": 4
+ },
+ {
+  "mark": 1,
+  "title": "Writing a Quantum-Safe Spending Path in Simplicity",
+  "description": "A hands-on tutorial: lock Liquid coins in a Simplicity program with two spending paths, a normal Schnorr key today and a hash-based backup key for a post-quantum future.",
+  "tags": [
+   "Simplicity",
+   "Tutorial",
+   "Liquid Network",
+   "Quantum"
+  ],
+  "lede": "This tutorial uses the Simplicity tools released with the Liquid mainnet launch. We write a program with two branches. The first checks an ordinary Schnorr signature, the way most coins are spent today. The second checks a one-time hash-based signature, built only from SHA-256 calls, and is meant to be used if elliptic curve keys ever become unsafe. We compile the program, commit to it in a Liquid address, fund it, and spend it through each branch. Along the way we look at how Simplicity's combinators express the branch, how the program's cost is bounded before it runs, and how big the witness gets. The same structure works for a vault with a recovery delay. The Simplicity tooling released with mainnet makes this a short exercise.",
+  "why": "Closest of all drafts to the void, but not a new topic: Blockstream Research already demonstrated quantum-resistant signing with Simplicity on Liquid. This would be the hands-on tutorial that post doesn't have.",
+  "round": 5
+ },
+ {
+  "mark": 2,
+  "title": "Swaps as a Service: A Core Lightning Plugin for Lightning–Liquid Swaps",
+  "description": "The Blockstream app's swaps need providers on the other side. We sketch a Core Lightning plugin that lets any node operator, including one on hosted infrastructure, run a Lightning–Liquid swap service.",
+  "tags": [
+   "Core Lightning",
+   "Plugins",
+   "Swaps",
+   "Liquid Network"
+  ],
+  "lede": "Each swap between Lightning and Liquid has two sides: the user's wallet and a provider with liquidity in both. Today there are few providers. A Core Lightning plugin could let any node operator become one. The plugin watches for swap requests, locks a Liquid output with the payment hash, and claims the Lightning payment once the user reveals the preimage. This post covers pricing, how to rebalance between layers, risks for the provider, and how a hosted node could run it without a server room. Hosted node services like Greenlight could expose the same plugin, letting operators offer swaps without managing servers. Apps built on Greenlight, such as Breez, could list these providers directly.",
+  "why": "Joins CLN plugins, swaps and Lightning infrastructure.",
+  "round": 5
+ },
+ {
+  "mark": 3,
+  "round": 5,
+  "title": "A Price Oracle for Liquid, Built from the Crypto Data Feed",
+  "description": "Liquid contracts and DEXs need prices they can check. We sketch an oracle that signs prices from the cryptocurrency data feed so Liquid apps and swaps can settle against them.",
+  "tags": [
+   "Liquid Network",
+   "Liquid Assets",
+   "Oracles",
+   "Data Feed"
+  ],
+  "lede": "Liquid now has stablecoins, a DEX, and live asset prices in the Blockstream app. What it lacks is a price that a contract can verify. Our cryptocurrency data feed already gathers prices from many exchanges. This post sketches an oracle that signs those prices with Schnorr keys held by several parties, publishes them on a fixed schedule, and lets a Liquid script or a Simplicity contract check the signature before settling. We cover how to pick the sources, how to handle outages, and how the roadmap items like 0-conf change what a fresh price means. Version 2 of the data feed added the low-latency streams this would build on. Other second-layer protocols, from Fuji.Money to Lightning, could read the same prices, which helps interoperability between layers.",
+  "why": "The data feed and Liquid assets sit near each other with no post joining them."
+ },
+ {
+  "mark": 6,
+  "title": "Check, Don't Trust: Reserves, Messages and Software",
+  "description": "Three things users are often asked to take on faith: an exchange's reserves, a message claiming to be from support, and the software they install. A short guide to checking each.",
+  "tags": [
+   "Security",
+   "Proof of Reserves",
+   "Phishing",
+   "Open Source"
+  ],
+  "lede": "An exchange says it holds your coins. A message says it comes from Blockstream. An app says it was built from its public code. Each claim can be checked. A proof of reserves shows on-chain coins and a liabilities list you can find yourself in. A real announcement is signed with a published key and never asks for your seed. A reproducible build lets anyone confirm the app matches its source. This guide shows how to do each check, and why we fund open-source tools such as the mempool explorer that make checking free. Verification matters most where trust is scarce, in regions bridging the digital divide.",
+  "why": "Between proof of reserves, phishing alerts and open-source support.",
+  "round": 5
+ }
+]

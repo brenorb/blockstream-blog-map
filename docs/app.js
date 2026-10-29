@@ -3,6 +3,7 @@
   const data = await (await fetch("data.json", { cache: "no-cache" })).json();
   const posts = data.posts;
   const ghosts = data.ghosts || [];
+  const handPicked = ghosts.filter((g) => g.mark).length;
   const clusters = data.clusters;
 
   // ---------- colors ----------
@@ -181,6 +182,14 @@
           ctx.strokeStyle = `rgba(255,179,71,${0.18 + 0.12 * pulse})`;
           ctx.beginPath(); ctx.arc(hx, hy, hr, 0, Math.PI * 2); ctx.stroke();
           ctx.restore();
+          if (g.mark) {  // the exact spot someone marked by hand
+            ctx.strokeStyle = `rgba(255,179,71,${0.45 + 0.2 * pulse})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(hx - 6, hy); ctx.lineTo(hx + 6, hy);
+            ctx.moveTo(hx, hy - 6); ctx.lineTo(hx, hy + 6);
+            ctx.stroke();
+          }
         }
         ctx.globalCompositeOperation = "lighter";
         const hs = 46 + 16 * pulse;
@@ -384,7 +393,8 @@
   const st = data.stats;
   document.getElementById("sub").innerHTML =
     `<b>${st.n}</b> posts, ${st.years[0]}–${st.years[1]}, placed by meaning. A typical post is <b>${Math.round(st.median_twin * 100)}%</b> similar to its closest twin.` +
-    (ghosts.length ? ` <span style="color:${GOLD}">★ ${ghosts.length} gold stars</span> are generated ideas for the empty spots.` : "");
+    (ghosts.length ? ` <span style="color:${GOLD}">★ ${ghosts.length} gold stars</span> are ideas for empty spots` +
+      (handPicked ? ` (${ghosts.length - handPicked} found by math, ${handPicked} marked by hand ✛).` : ".") : "");
   document.getElementById("foot-model").textContent = data.model;
 
   renderLegend();

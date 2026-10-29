@@ -1,6 +1,6 @@
 """Project embeddings to 2D, cluster them, compute neighbors, and export docs/data.json.
 
-Also exports ghost (generated) posts from data/ghosts.json if that file exists.
+Also exports ghost (generated) posts from data/ghosts.json and data/marked_ghosts.json if present.
 """
 
 import json
@@ -99,11 +99,18 @@ def main():
 
     # Ghost (generated) posts: placed with the same UMAP model and measured the same way as real posts.
     ghosts = []
-    gpath, gvec = DATA / "ghosts.json", DATA / "ghost_embeddings.npy"
-    if gpath.exists() and gvec.exists():
-        G = np.load(gvec)
+    # ghosts.json: holes found by math (find_gaps.py); marked_ghosts.json: spots marked by hand (marked.py)
+    gmeta, gvecs = [], []
+    for name, vec in (("ghosts.json", "ghost_embeddings.npy"), ("marked_ghosts.json", "marked_embeddings.npy")):
+        if (DATA / name).exists() and (DATA / vec).exists():
+            gmeta += json.load(open(DATA / name))
+            gvecs.append(np.load(DATA / vec))
+    if gmeta:
+        G = np.vstack(gvecs)
         gxy = place(reducer, G, {"center": center, "scale": scale})
-        for gi, g in enumerate(json.load(open(gpath))):
+        for gi, g in enumerate(gmeta):
+            if "mark" in g:  # draw the hand-marked target the same way as a hole
+                g = {**g, "hole": g["mark"]}
             sims = X @ G[gi]
             order = np.argsort(-sims)[:K_NEIGHBORS]
             ghosts.append({
