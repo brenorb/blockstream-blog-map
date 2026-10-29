@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blockstream Blog Map</title>
+<meta name="description" content="Every Blockstream blog post on one map of meaning, built with open-source embeddings, plus generated posts for the empty spaces.">
+<meta property="og:title" content="Blockstream Blog Map">
+<meta property="og:description" content="335 Blockstream blog posts on a map of meaning, plus ideas for the gaps.">
+<meta property="og:image" content="screenshot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="map" aria-label="Map of Blockstream blog posts"></canvas>
+
+<header class="top">
+  <div class="kicker"><span class="num">01</span><span class="rule"></span>MAP OF MEANING</div>
+  <h1>Blockstream Blog</h1>
+  <p class="sub" id="sub">Loading…</p>
+</header>
+
+<div class="controls">
+  <input id="search" type="search" placeholder="Search posts…" autocomplete="off" aria-label="Search posts">
+  <div class="seg" role="group" aria-label="Color by">
+    <button data-color="cluster" class="on">Topic</button>
+    <button data-color="year">Year</button>
+  </div>
+  <button id="toggle-ghosts" class="pill on" title="Show generated posts">★ New ideas</button>
+  <button id="toggle-legend" class="pill" title="Show topics">Topics</button>
+</div>
+
+<aside id="legend" class="legend" hidden></aside>
+
+<aside id="card" class="card" hidden></aside>
+
+<div id="tip" class="tip" hidden></div>
+
+<footer class="foot">
+  <span id="foot-model"></span> · UMAP · <a href="https://github.com/brenorb/blockstream-blog-map">source</a>
+  · Not affiliated with Blockstream.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

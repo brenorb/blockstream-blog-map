@@ -1,0 +1,15 @@
+[project]
+name = "blockstream-blog-map"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "hdbscan>=0.8.44",
+    "lxml>=6.1.3",
+    "numpy>=2.5.4",
+    "requests>=2.34.2",
+    "scikit-learn>=1.9.1",
+    "sentence-transformers>=6.2.0",
+    "torch>=2.15.0",
+    "umap-learn>=0.5.12",
+]

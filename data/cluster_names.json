@@ -1,0 +1,16 @@
+{
+  "0": {"name": "Covenants & OP_CAT", "blurb": "Script opcodes, covenants and CAT/Schnorr tricks."},
+  "1": {"name": "Jade Hardware", "blurb": "Jade hardware wallets, firmware and self-custody."},
+  "2": {"name": "Core Lightning", "blurb": "Core Lightning / c-lightning versions and Lightning research."},
+  "3": {"name": "Liquid Federation", "blurb": "Liquid launch, members, hackathons and conferences."},
+  "4": {"name": "Green Wallet", "blurb": "Green / Blockstream app, multisig and mobile wallets."},
+  "5": {"name": "Liquid Assets", "blurb": "Issued assets, securities, AMP and LiquiDEX."},
+  "6": {"name": "c-lightning Plugins", "blurb": "Early c-lightning releases and the plugin series."},
+  "7": {"name": "Federations & Security", "blurb": "Fedimint, e-cash, sidechains and security disclosures."},
+  "8": {"name": "Simplicity", "blurb": "The Simplicity smart-contract language."},
+  "9": {"name": "Explorer & Data Feeds", "blurb": "Esplora explorer, APIs and the ICE crypto data feed."},
+  "10": {"name": "Elements", "blurb": "Elements releases, confidential transactions and fees."},
+  "11": {"name": "Signatures & Post-Quantum", "blurb": "Schnorr, MuSig, FROST and post-quantum signature research."},
+  "12": {"name": "Lightning Apps & Infra", "blurb": "Lightning Charge LApps, Greenlight and node infrastructure."},
+  "13": {"name": "Satellite & Company News", "blurb": "Blockstream Satellite, quarterly updates and company news."}
+}
