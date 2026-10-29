@@ -1,0 +1,319 @@
+[
+ {
+  "hole": 0,
+  "title": "Channel Factories on Liquid: Batching Lightning Channels with Elements Covenants",
+  "description": "Elements introspection opcodes let one Liquid output commit to how it may be split. We sketch a channel factory where a covenant fans a single shared output into many Lightning channels, so hosted nodes can open and rebalance in batches without a custodian.",
+  "tags": [
+   "Elements",
+   "Liquid Network",
+   "Lightning Network",
+   "Blockstream Research"
+  ],
+  "lede": "Opening a Lightning channel is an on-chain event, and on-chain events are where hosted Lightning services pay most of their cost. Liquid already runs covenants in production: Elements introspection opcodes let a script inspect the transaction that spends it. That is enough to build a channel factory. A group of users and one service lock funds into a single Liquid output whose script only allows it to be split into pre-agreed two-party channel outputs. Nobody can redirect the money, because the covenant checks every output amount and script. Users who later want to leave can force the split on their own. The design keeps confidential amounts, settles in two minutes and batches dozens of channel opens into one transaction. In this post we walk through the script, the exit paths, the fee math under discounted confidential transactions, and what changes if the factory is run by a node host instead of the user.",
+  "why": "The blog covers covenants on Liquid and hosted Lightning separately. Nothing connects them: using Liquid's covenants as the plumbing that makes hosted Lightning cheaper and trust-minimized.",
+  "round": 1
+ },
+ {
+  "hole": 0,
+  "title": "Covenant Vaults for Hosted Lightning Nodes",
+  "description": "A hosted Lightning node holds keys on the user's device, but its on-chain reserves still sit in plain outputs. We explore Liquid covenant vaults that force any sweep of a node's reserves through a delay the user can cancel.",
+  "tags": [
+   "Liquid Network",
+   "Elements",
+   "Lightning Network",
+   "Blockstream app"
+  ],
+  "lede": "Hosted Lightning services split responsibilities: the operator runs the node, the user keeps the signing keys. The weak point is everything that happens on-chain, where a compromised signer can sweep reserves in one transaction. Covenants offer a different shape. On Liquid, an Elements script can require that funds leaving a vault first pass through an unvaulting output with a time delay, and that during that delay a recovery key can claw them back. We describe a vault template for node reserves, the watchtower that monitors it, how confidential amounts interact with the delay, and the user experience of cancelling a theft from a phone.",
+  "why": "Vaults and hosted Lightning both appear on the blog, but never together. This applies covenant vaults to the on-chain reserves behind hosted nodes.",
+  "round": 1
+ },
+ {
+  "hole": 0,
+  "title": "Smart Contracts as Lightning Endpoints: Paying Liquid Contracts over Lightning",
+  "description": "Liquid smart contracts can hold funds under covenant rules, but paying into one requires a Liquid wallet. We outline how a Lightning invoice can settle straight into a covenant-controlled contract on Liquid.",
+  "tags": [
+   "Liquid Network",
+   "Lightning Network",
+   "Elements"
+  ],
+  "lede": "Financial products on Liquid, such as options, loans and escrow, live in covenant-controlled outputs. Their users mostly live on Lightning. Today, joining a contract means moving to a Liquid wallet first. We sketch an endpoint pattern where a Lightning payment settles directly into a contract output: a swap service pays into a covenant whose script binds the contract terms to the preimage of the Lightning invoice. If the swap provider fails, the covenant refunds itself. We cover the script template, fee overhead, confidentiality, and which contracts fit this pattern.",
+  "why": "Liquid contracts and Lightning payments are separate stories on the blog. This makes a Lightning invoice the front door to a Liquid covenant contract.",
+  "round": 1
+ },
+ {
+  "hole": 1,
+  "title": "Your Multisig Shouldn't Look Like Multisig",
+  "description": "Taproot made it possible for a 2-of-3 wallet to look like a single key on-chain. We look at what it takes to bring MuSig2 and FROST to an everyday mobile wallet, and what users gain in privacy and fees.",
+  "tags": [
+   "Blockstream app",
+   "Blockstream Research",
+   "Multisig",
+   "Privacy"
+  ],
+  "lede": "Most multisig wallets still announce themselves on-chain. Anyone watching can see the policy, count the keys and link the coins. Schnorr signatures changed that. With MuSig2, several keys can produce one ordinary-looking signature, and with FROST a threshold of them can. The research is done; the open question is product design. How does a phone run a two-round signing protocol with a server and a hardware wallet that are not always online? How do you back up a key that only exists as a share? What happens to recovery paths, which must stay script-based? This post walks through a design for a private 2-of-3 wallet built on MuSig2 for the happy path and a Taproot script path for recovery, and measures how much smaller and less linkable its transactions become.",
+  "why": "The blog has the cryptography (MuSig2, ROAST, FROST) and the wallet (Green and the app), but no post about turning one into the other for ordinary users.",
+  "round": 1
+ },
+ {
+  "hole": 1,
+  "title": "Proving Your Balance Without Revealing It",
+  "description": "Range proofs hide amounts in confidential transactions. We explore using Bulletproofs-style proofs so an individual can show they hold at least an amount of bitcoin, to a lender or landlord, without exposing their wallet.",
+  "tags": [
+   "Privacy",
+   "Blockstream Research",
+   "Blockstream app"
+  ],
+  "lede": "People are routinely asked to prove they have money: by landlords, lenders and exchanges. In Bitcoin the usual answer is to reveal an address, which reveals far more than a balance. Range proofs were built for confidential transactions, to show an amount is valid without showing it. The same tools can show that a set of coins you control adds up to at least some threshold. We sketch a personal proof-of-funds flow in a wallet: select coins, produce a proof that commits to their sum, sign it with your keys, and hand over a file that verifies without ever listing your addresses.",
+  "why": "Proof of reserves on the blog is about institutions. Applying the same privacy tools to an individual's proof of funds is missing.",
+  "round": 1
+ },
+ {
+  "hole": 1,
+  "title": "Threshold Signing on Flaky Phones: What ROAST Means for Mobile Multisig",
+  "description": "ROAST makes threshold Schnorr signing robust when some signers never answer. We look at what that robustness buys a mobile wallet whose cosigners are phones, hardware wallets and servers with bad connectivity.",
+  "tags": [
+   "Blockstream Research",
+   "Blockstream app",
+   "Multisig"
+  ],
+  "lede": "Threshold signatures are usually presented with every signer online and responsive. Real wallets are messier. A phone loses signal, a hardware wallet sits in a drawer, a server restarts mid-session. FROST alone stalls if a chosen signer disappears. ROAST wraps it so the protocol keeps going with whoever does answer. In this post we model a three-device wallet, measure how often signing would stall without ROAST under realistic uptime, and propose a user flow that hides the retries.",
+  "why": "ROAST was introduced for federations. Nobody has written about it from the angle of a consumer wallet with unreliable devices.",
+  "round": 1
+ },
+ {
+  "hole": 2,
+  "title": "Liquid as a Lightning Battery",
+  "description": "A mobile Lightning wallet runs out of inbound or outbound capacity at the worst time. We look at keeping a small Liquid balance as a battery that swaps refill on demand, instead of opening or splicing channels.",
+  "tags": [
+   "Lightning Network",
+   "Liquid Network",
+   "Blockstream app",
+   "Swaps"
+  ],
+  "lede": "Every self-custodial Lightning wallet eventually hits a capacity wall: a payment fails because the channel is drained on one side. The usual fixes are expensive on-chain operations: open a new channel, splice, or rebalance through routing fees. A wallet that also holds Liquid bitcoin has another option. Treat the Liquid balance as a battery. When outbound capacity runs low, a submarine swap moves value from Liquid into the channel; when inbound runs low, a reverse swap drains it back. We simulate a year of payments for a typical user and compare the cost, failure rate and on-chain footprint of the battery model against channel management alone.",
+  "why": "Swaps and hosted Lightning are both covered, but only as features. This treats the swap layer as a capacity-management strategy and measures it.",
+  "round": 1
+ },
+ {
+  "hole": 2,
+  "title": "When the Swap Provider Disappears",
+  "description": "Swaps move value between Bitcoin layers without a custodian, but users still depend on the provider being online. We walk through every point in a swap where the provider can vanish, and how the user gets their money back at each one.",
+  "tags": [
+   "Lightning Network",
+   "Liquid Network",
+   "Swaps",
+   "Security"
+  ],
+  "lede": "A swap is a short contract between a user and a provider, enforced by hashes and timeouts. Its promise is that nobody can steal funds. Its fine print is that providers can still vanish halfway. This post takes the swap state machine apart step by step: invoice created, lockup broadcast, claim pending, refund window open. For each state we show what happens if the provider goes offline forever, how long the user waits, and what the wallet must store locally to recover without help. We end with a checklist wallet developers can use to test their own recovery paths.",
+  "why": "The blog announces swap features but has no post on failure modes and recovery, which is what users of a non-custodial swap care about most.",
+  "round": 1
+ },
+ {
+  "hole": 2,
+  "title": "Swap Receipts: Proving a Cross-Layer Payment Happened",
+  "description": "When a payment crosses from Lightning to Liquid or on-chain, there is no single receipt. We propose a portable proof that ties the invoice preimage, the swap and the settlement transaction together.",
+  "tags": [
+   "Lightning Network",
+   "Liquid Network",
+   "Swaps"
+  ],
+  "lede": "Merchants ask a simple question after a cross-layer payment: did it arrive? On Lightning the preimage is the receipt. On-chain the transaction is. A swap sits between the two and leaves pieces of evidence in both places. We describe a swap receipt: a small signed bundle that links the invoice, the preimage, the lockup and the claim transaction, verifiable by anyone with access to the chains.",
+  "why": "Cross-layer payments are covered as a user feature; how to prove them afterwards is not.",
+  "round": 1
+ },
+ {
+  "hole": 3,
+  "title": "Set Reconciliation Between Layers",
+  "description": "Minisketch cut the bandwidth nodes spend agreeing on transactions. We ask whether the same set reconciliation can keep Bitcoin's layers in sync: federation peg-ins, Lightning gossip and sidechain mempools.",
+  "tags": [
+   "Layer-2 Report",
+   "Liquid Network",
+   "Blockstream Research"
+  ],
+  "lede": "Bitcoin's layers constantly need to agree on sets: which peg-ins a federation has seen, which channel updates a Lightning node knows, which transactions sit in a sidechain mempool. Most of that syncing is done the naive way, by sending everything. Minisketch showed a better approach for Bitcoin transaction relay: exchange a compact sketch of the difference, sized to the difference, not the whole set. We look at three places across layers where sketches could replace full sync, estimate the bandwidth savings using real gossip and peg-in data, and list what would need to change in each protocol.",
+  "why": "Minisketch lives in the base-layer research corner, and layer interoperability lives in the Layer-2 corner. Nobody has applied one to the other.",
+  "round": 1
+ },
+ {
+  "hole": 3,
+  "title": "An Interop Scorecard for Bitcoin Layers",
+  "description": "Every Bitcoin layer claims to be fast, cheap and trust-minimized. We propose a scorecard that measures exit time, peg costs, trust assumptions and cross-layer routes the same way for all of them.",
+  "tags": [
+   "Layer-2 Report",
+   "Liquid Network",
+   "Lightning Network"
+  ],
+  "lede": "Comparisons between Bitcoin layers usually come from the teams that build them. We propose measuring them the same way instead: how long until a user can exit to the base chain without permission, what a round trip costs in fees, who can freeze or censor funds, and which other layers can be reached directly. We fill in the scorecard for Liquid, Lightning and two other layers using public data, and publish the method so anyone can extend it.",
+  "why": "The Layer-2 posts profile one project at a time. A common yardstick across layers is absent.",
+  "round": 1
+ },
+ {
+  "hole": 3,
+  "title": "Lending Across Layers",
+  "description": "Bitcoin-native lending mostly lives on one layer at a time. We sketch a loan collateralized on Liquid that is repaid from a Lightning node's routing income.",
+  "tags": [
+   "Layer-2 Report",
+   "Liquid Network",
+   "Lightning Network"
+  ],
+  "lede": "Lightning node operators earn small, steady routing fees but need capital up front to open channels. Liquid already hosts non-custodial lending. We sketch how the two could meet: collateral locked in a Liquid contract, liquidity delivered as channel capacity, and repayments streamed from routing revenue through swaps.",
+  "why": "Lending and Lightning node economics appear on the blog, never in the same place.",
+  "round": 1
+ },
+ {
+  "hole": 4,
+  "title": "Proof Before Panic: Formally Verifying a Post-Quantum Verifier in Simplicity",
+  "description": "Hash-based signatures can already be checked on Liquid with Simplicity. The harder question is whether the verifier is correct. We show how Simplicity's formal semantics let us prove a post-quantum verifier rejects every forgery the scheme rules out.",
+  "tags": [
+   "Simplicity Language",
+   "Quantum",
+   "Blockstream Research"
+  ],
+  "lede": "A post-quantum signature scheme is only as safe as the code that verifies it. Hash-based schemes look simple on paper, but a verifier has many places to go wrong: off-by-one tree indices, truncated hashes, missing checks on the final layer. Simplicity was designed so programs can be reasoned about mathematically. In this post we take a SHRINCS-style verifier written in Simplicity and walk through a machine-checked proof that it accepts exactly the signatures the specification accepts. We also measure what the proof costs in development time compared with testing alone, and which parts of the verifier were hardest to prove.",
+  "why": "The blog has post-quantum signature research and Simplicity deployments, but nothing on using Simplicity's formal verification to make those verifiers trustworthy.",
+  "round": 1
+ },
+ {
+  "hole": 4,
+  "title": "Quantum Escape Hatches: Simplicity Contracts That Rotate Keys When Signatures Break",
+  "description": "If elliptic-curve signatures become unsafe, coins locked to them need a way out. We design a Simplicity contract with a pre-committed post-quantum escape path that activates only when a quantum break is proven on-chain.",
+  "tags": [
+   "Simplicity Language",
+   "Quantum",
+   "Liquid Network"
+  ],
+  "lede": "Migrating to post-quantum signatures is easy for coins that move. It is hard for coins that sit in cold storage for years. A Simplicity contract can hold both: an ordinary Schnorr spending path for today, and a hash-based path committed in advance for the day Schnorr can no longer be trusted. The hard part is the trigger. We explore a trigger that requires a public proof of a broken key, for example a valid signature from a nothing-up-my-sleeve public key, so the escape path cannot be used early.",
+  "why": "Post-quantum migration is discussed as a protocol change. This treats it as a contract the user can deploy today.",
+  "round": 1
+ },
+ {
+  "hole": 4,
+  "title": "Counting Every Byte: The Cost Model of Post-Quantum Spends in Simplicity",
+  "description": "Post-quantum signatures are big, and Simplicity programs have a cost. We break down what a post-quantum spend on Liquid costs today, byte by byte, and where the savings can come from.",
+  "tags": [
+   "Simplicity Language",
+   "Quantum",
+   "Liquid Network"
+  ],
+  "lede": "Post-quantum signatures cost space, and Simplicity programs cost weight. We take a hash-based spend and measure each component: signature size, program size, and the budget Simplicity charges for execution. Then we try three optimizations and report which ones help.",
+  "why": "Size benchmarks exist for signatures and hardware. A cost model for the full spend in Simplicity does not.",
+  "round": 1
+ },
+ {
+  "hole": 5,
+  "title": "A Self-Custody Workshop in a Box",
+  "description": "Meetups are where many people set up their first wallet. We put together a workshop kit: slides, a Jade setup script, a testnet faucet and a recovery drill, so any organizer can run a hands-on self-custody night.",
+  "tags": [
+   "Blockstream Jade",
+   "Blockstream app",
+   "Education"
+  ],
+  "lede": "The best time to learn self-custody is with a friend sitting next to you. Local meetups already do this informally. Someone brings a hardware wallet, someone else asks how seed words work, and an hour later three people have backups they do not trust. This post describes a workshop in a box for organizers. It includes a 45-minute agenda, a printed seed card template, a testnet setup for Jade and the app so nobody risks real funds, and a recovery drill where attendees wipe their device and restore it. We also share what we learned from running it with first-timers: which steps confuse people, and which mistakes they make when nobody is watching.",
+  "why": "The blog covers new wallets and devices, and separately covers meetups. A practical teaching kit that joins them is missing.",
+  "round": 1
+ },
+ {
+  "hole": 5,
+  "title": "Inheritance Without Lawyers: Planning Your Bitcoin Handoff with Jade",
+  "description": "Self-custody solves theft, not death. We walk through a plain-language inheritance plan using a hardware wallet, a 2-of-3 setup and a letter your family can actually follow.",
+  "tags": [
+   "Blockstream Jade",
+   "Blockstream app",
+   "Multisig"
+  ],
+  "lede": "Every self-custody guide ends at a secure backup. Very few cover what happens when the person who made it is gone. We walk through a family plan: a 2-of-3 wallet with one key on Jade, one with a trusted relative and one in a sealed envelope, plus a one-page letter that explains, in plain words, how to recover the coins. We test the letter on people who have never used bitcoin.",
+  "why": "Self-custody content on the blog stops at setup and backups; inheritance is not covered.",
+  "round": 1
+ },
+ {
+  "hole": 5,
+  "title": "The Household Wallet: Sharing One Bitcoin Stack Across Family Devices",
+  "description": "Families share bank accounts, but bitcoin wallets are built for one person. We sketch a household setup across phones, a desktop and a Jade.",
+  "tags": [
+   "Blockstream Jade",
+   "Blockstream app"
+  ],
+  "lede": "Bitcoin wallets assume a single owner. Real households have shared savings, kids' allowances and a partner who needs access in an emergency. We sketch a setup across the Blockstream app on two phones, a desktop and a Jade, with spending limits and a shared cold-storage account.",
+  "why": "Wallet posts on the blog target individuals; shared household custody is untouched.",
+  "round": 1
+ },
+ {
+  "round": 2,
+  "hole": 1,
+  "title": "Hiding the Policy and the Amount: Designing a Fully Private Taproot Wallet",
+  "description": "Taproot can hide a multisig policy and confidential transactions can hide amounts, but no everyday wallet combines both. We look at the research pieces, from key aggregation and threshold signing to range proofs and client-side validation, and how a wallet could put them together.",
+  "tags": [
+   "Blockstream Research",
+   "Blockstream app",
+   "Privacy"
+  ],
+  "lede": "Privacy in Bitcoin has two halves. One is who controls coins and under what rules; the other is how much moves. Research has produced tools for both. Key aggregation and threshold signatures make a 2-of-3 wallet look like a single key. Range proofs, made practical by Bulletproofs, hide amounts on Liquid. Newer ideas like client-side validation and shielded protocols go further and take transaction data off-chain. What is missing is a wallet that treats these as one design. This post sketches that wallet: which pieces work on Bitcoin today, which only work on Liquid, which still need a soft fork, and what the user would see at each step. We end with an honest list of the trade-offs: bigger proofs, interactive signing, and harder backups.",
+  "why": "The blog has each privacy primitive in its own post. A wallet design that composes them is the missing piece."
+ },
+ {
+  "round": 2,
+  "hole": 3,
+  "title": "A Builder's Map of Bitcoin Layers",
+  "description": "New Bitcoin developers face a crowded field of layers: Lightning, Liquid, federated e-cash, BitVM-style bridges. We map what each layer is good for, how they connect, and where the open problems are for builders.",
+  "tags": [
+   "Layer-2 Report",
+   "Liquid Network",
+   "Lightning Network"
+  ],
+  "lede": "Every month someone at a meetup asks which Bitcoin layer they should build on. The honest answer depends on the app. Payments want instant settlement, financial products want programmability and confidentiality, and lending wants assets and contracts. This post is a map for builders. For each layer we list what it does well, how value moves in and out, what the trust model is, and how it connects to the others today through swaps, bridges and shared tooling. We finish with a list of open problems where a small team could make a real difference, from interoperable invoices to bandwidth-efficient syncing between layers, and the community programs and funding paths available to people who want to work on them.",
+  "why": "Posts about layers are either announcements or single-project profiles. A builder-oriented map across all of them is missing."
+ },
+ {
+  "round": 2,
+  "hole": 3,
+  "title": "Funding the Bridges: What Cross-Layer Bitcoin Infrastructure Still Needs",
+  "description": "Builders get grants and accelerators for apps on a single layer. The glue between layers, like swaps, interoperable invoices and state syncing, gets little attention. We list the gaps and what funding them would take.",
+  "tags": [
+   "Layer-2 Report",
+   "Liquid Network",
+   "Company"
+  ],
+  "lede": "Accelerators and hackathons have produced many apps on individual Bitcoin layers. Far fewer projects work on the connections between them. We list the infrastructure gaps we see between Lightning, Liquid and the base chain, estimate the engineering effort for each, and suggest how community programs could fund them.",
+  "why": "Community and venture programs appear on the blog, but not aimed at cross-layer infrastructure."
+ },
+ {
+  "round": 2,
+  "hole": 4,
+  "title": "Clear Signing for Simplicity: Teaching a Hardware Wallet to Read Contracts",
+  "description": "Hardware wallets can already compute post-quantum signatures, and Simplicity is live on Liquid. The gap is that a device signing a Simplicity spend cannot show the user what the contract does. We sketch how a hardware wallet could display a Simplicity program in human terms.",
+  "tags": [
+   "Simplicity Language",
+   "Blockstream Jade",
+   "Quantum"
+  ],
+  "lede": "A hardware wallet's job is to show you what you are signing. For a normal payment that is an address and an amount. For a Simplicity contract it might be a vault, an option, or a post-quantum spending policy, and today the device shows little more than a hash. Simplicity programs are small, typed and have precise semantics, which makes them unusually suitable for on-device analysis. We sketch how a hardware wallet with limited memory could recognize common contract templates, check the parameters, and display them in plain words, and we measure how much memory and time that takes compared with the signing itself, including hash-based post-quantum signatures.",
+  "why": "Post-quantum benchmarks on hardware wallets and Simplicity contracts are both on the blog, but nothing covers how a device would show a user what a Simplicity contract does."
+ },
+ {
+  "round": 2,
+  "hole": 2,
+  "title": "Lightning for Shops Without Running a Node",
+  "description": "Small merchants want Lightning payments but not a node to babysit. We sketch a setup where a hosted, non-custodial Lightning node takes payments and swaps automatically sweep the day's takings to Liquid or on-chain savings the merchant controls.",
+  "tags": [
+   "Lightning Network",
+   "Blockstream app",
+   "Liquid Network",
+   "Swaps"
+  ],
+  "lede": "A café that wants to accept Lightning faces an awkward choice. Running its own node means channels, liquidity and backups. A custodial service means trusting someone else with the till. Hosted non-custodial infrastructure sits in between: the node runs in the cloud, but the keys stay on the merchant's device. The remaining problem is what to do with the money at the end of the day. Swaps answer that. Each evening, the wallet can move the day's Lightning balance into Liquid bitcoin for low-fee storage, or on-chain for long-term savings, without a custodian in the middle and without closing channels. We walk through the setup from the merchant's point of view, the fees involved for a shop taking a few hundred payments a week, and what happens if the hosting or swap provider goes offline.",
+  "why": "Hosted Lightning and swaps are each announced on the blog for developers and individual users. A merchant workflow that combines them is not covered."
+ },
+ {
+  "round": 2,
+  "hole": 2,
+  "title": "Inbound Liquidity on Demand: Hosted Nodes That Swap Instead of Asking",
+  "description": "New Lightning users can't receive until someone opens a channel to them. We look at how a hosted node plus a reverse swap can create inbound capacity on demand, without a liquidity provider in the loop.",
+  "tags": [
+   "Lightning Network",
+   "Swaps",
+   "Blockstream app"
+  ],
+  "lede": "The first Lightning payment a new user tries to receive often fails: no inbound capacity. Hosted nodes and swaps together offer a way out. A reverse swap can move funds out of a channel and into Liquid, creating room to receive. We walk through the sequence, the costs, and when it beats buying inbound liquidity.",
+  "why": "Inbound liquidity is a known Lightning pain point, but the blog never addresses it with the hosted-node and swap pieces it already describes."
+ }
+]

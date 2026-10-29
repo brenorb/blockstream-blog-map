@@ -40,3 +40,9 @@ def model():
 def embed(texts: list[str]) -> np.ndarray:
     v = model().encode(texts, batch_size=16, normalize_embeddings=True, show_progress_bar=len(texts) > 32)
     return np.asarray(v, dtype=np.float32)
+
+
+def place(reducer, V, proj) -> np.ndarray:
+    """Map embeddings onto the 2D map one at a time, so a point's spot never depends on its batch."""
+    xy = np.vstack([reducer.transform(v[None]) for v in V])
+    return (xy - np.array(proj["center"])) / proj["scale"]

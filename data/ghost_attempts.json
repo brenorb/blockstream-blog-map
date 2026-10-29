@@ -1,0 +1,386 @@
+[
+ {
+  "hole": 0,
+  "title": "Channel Factories on Liquid: Batching Lightning Channels with Elements Covenants",
+  "cos_to_target": 0.627,
+  "twin": 0.662,
+  "twin_title": "Before They Were Cool: Covenants in Production on Liquid",
+  "closer": 0.8716,
+  "lands": [
+   0.6502,
+   -0.4385
+  ],
+  "in_hole": false,
+  "too_close": false,
+  "ok": false,
+  "score": 0.2958
+ },
+ {
+  "hole": 0,
+  "title": "Covenant Vaults for Hosted Lightning Nodes",
+  "cos_to_target": 0.598,
+  "twin": 0.651,
+  "twin_title": "Greenlight by Blockstream: Lightning Made Easy",
+  "closer": 0.8836,
+  "lands": [
+   0.2599,
+   -0.3685
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4724
+ },
+ {
+  "hole": 0,
+  "title": "Smart Contracts as Lightning Endpoints: Paying Liquid Contracts over Lightning",
+  "cos_to_target": 0.659,
+  "twin": 0.703,
+  "twin_title": "Enabling Lightning Payments with Liquid Swaps in the Blockstream App",
+  "closer": 0.7433,
+  "lands": [
+   0.2009,
+   -0.1862
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.5074
+ },
+ {
+  "hole": 1,
+  "title": "Your Multisig Shouldn't Look Like Multisig",
+  "cos_to_target": 0.61,
+  "twin": 0.784,
+  "twin_title": "MuSig2: Simple Two-Round Schnorr Multisignatures",
+  "closer": 0.4418,
+  "lands": [
+   -0.418,
+   0.0766
+  ],
+  "in_hole": true,
+  "too_close": true,
+  "ok": false,
+  "score": 0.2182
+ },
+ {
+  "hole": 1,
+  "title": "Proving Your Balance Without Revealing It",
+  "cos_to_target": 0.57,
+  "twin": 0.647,
+  "twin_title": "Bulletproofs: Faster Rangeproofs and Much More",
+  "closer": 0.8955,
+  "lands": [
+   -0.2625,
+   0.0334
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4465
+ },
+ {
+  "hole": 1,
+  "title": "Threshold Signing on Flaky Phones: What ROAST Means for Mobile Multisig",
+  "cos_to_target": 0.495,
+  "twin": 0.668,
+  "twin_title": "ROAST: Robust Asynchronous Schnorr Threshold Signatures",
+  "closer": 0.8597,
+  "lands": [
+   -0.4869,
+   0.0316
+  ],
+  "in_hole": false,
+  "too_close": false,
+  "ok": false,
+  "score": 0.1611
+ },
+ {
+  "hole": 2,
+  "title": "Liquid as a Lightning Battery",
+  "cos_to_target": 0.542,
+  "twin": 0.69,
+  "twin_title": "Enabling Lightning Payments with Liquid Swaps in the Blockstream App",
+  "closer": 0.7851,
+  "lands": [
+   0.3555,
+   -0.211
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.3972
+ },
+ {
+  "hole": 2,
+  "title": "When the Swap Provider Disappears",
+  "cos_to_target": 0.565,
+  "twin": 0.762,
+  "twin_title": "Announcing Blockstream Swaps",
+  "closer": 0.5403,
+  "lands": [
+   0.2333,
+   -0.1583
+  ],
+  "in_hole": false,
+  "too_close": false,
+  "ok": false,
+  "score": 0.184
+ },
+ {
+  "hole": 2,
+  "title": "Swap Receipts: Proving a Cross-Layer Payment Happened",
+  "cos_to_target": 0.481,
+  "twin": 0.674,
+  "twin_title": "Enabling Lightning Payments with Liquid Swaps in the Blockstream App",
+  "closer": 0.8358,
+  "lands": [
+   0.314,
+   -0.2214
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.3441
+ },
+ {
+  "hole": 3,
+  "title": "Set Reconciliation Between Layers",
+  "cos_to_target": 0.635,
+  "twin": 0.746,
+  "twin_title": "Minisketch: Reducing Bitcoin Node Bandwidth Requirements",
+  "closer": 0.6119,
+  "lands": [
+   0.5119,
+   -0.2666
+  ],
+  "in_hole": false,
+  "too_close": false,
+  "ok": false,
+  "score": 0.2618
+ },
+ {
+  "hole": 3,
+  "title": "An Interop Scorecard for Bitcoin Layers",
+  "cos_to_target": 0.538,
+  "twin": 0.659,
+  "twin_title": "Increasing Interoperability Between Bitcoin’s Second-Layer Protocols",
+  "closer": 0.8746,
+  "lands": [
+   0.3109,
+   -0.0372
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4087
+ },
+ {
+  "hole": 3,
+  "title": "Lending Across Layers",
+  "cos_to_target": 0.585,
+  "twin": 0.733,
+  "twin_title": "Layer-2 Roundup: A Fuji.Money Deep Dive",
+  "closer": 0.6478,
+  "lands": [
+   0.3924,
+   -0.1735
+  ],
+  "in_hole": false,
+  "too_close": false,
+  "ok": false,
+  "score": 0.2186
+ },
+ {
+  "hole": 4,
+  "title": "Proof Before Panic: Formally Verifying a Post-Quantum Verifier in Simplicity",
+  "cos_to_target": 0.578,
+  "twin": 0.744,
+  "twin_title": "Blockstream Research Demonstrates Quantum-Resistant Transaction Signing on Liquid Using Simplicity Smart Contracts",
+  "closer": 0.6179,
+  "lands": [
+   -0.6277,
+   -0.0898
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.406
+ },
+ {
+  "hole": 4,
+  "title": "Quantum Escape Hatches: Simplicity Contracts That Rotate Keys When Signatures Break",
+  "cos_to_target": 0.587,
+  "twin": 0.76,
+  "twin_title": "Blockstream Research Demonstrates Quantum-Resistant Transaction Signing on Liquid Using Simplicity Smart Contracts",
+  "closer": 0.5522,
+  "lands": [
+   -0.5978,
+   -0.0528
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4071
+ },
+ {
+  "hole": 4,
+  "title": "Counting Every Byte: The Cost Model of Post-Quantum Spends in Simplicity",
+  "cos_to_target": 0.53,
+  "twin": 0.718,
+  "twin_title": "Blockstream Research Demonstrates Quantum-Resistant Transaction Signing on Liquid Using Simplicity Smart Contracts",
+  "closer": 0.7194,
+  "lands": [
+   -0.647,
+   -0.1059
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.371
+ },
+ {
+  "hole": 5,
+  "title": "A Self-Custody Workshop in a Box",
+  "cos_to_target": 0.641,
+  "twin": 0.686,
+  "twin_title": "Blockstream Local: Now Powered by the Blockstream App",
+  "closer": 0.8,
+  "lands": [
+   -0.4378,
+   0.4801
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4982
+ },
+ {
+  "hole": 5,
+  "title": "Inheritance Without Lawyers: Planning Your Bitcoin Handoff with Jade",
+  "cos_to_target": 0.615,
+  "twin": 0.686,
+  "twin_title": "Introducing Jade Core: Your First Step to Bitcoin Self-Custody",
+  "closer": 0.8,
+  "lands": [
+   -0.4339,
+   0.4908
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4719
+ },
+ {
+  "hole": 5,
+  "title": "The Household Wallet: Sharing One Bitcoin Stack Across Family Devices",
+  "cos_to_target": 0.566,
+  "twin": 0.653,
+  "twin_title": "Blockstream Jade to Power Swan’s New Collaborative Custody Solution",
+  "closer": 0.8836,
+  "lands": [
+   -0.4493,
+   0.4691
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4395
+ },
+ {
+  "hole": 1,
+  "title": "Hiding the Policy and the Amount: Designing a Fully Private Taproot Wallet",
+  "cos_to_target": 0.673,
+  "twin": 0.67,
+  "twin_title": "PSET: Constructing Confidential Transactions",
+  "closer": 0.8567,
+  "lands": [
+   -0.3707,
+   0.0862
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.5381
+ },
+ {
+  "hole": 3,
+  "title": "A Builder's Map of Bitcoin Layers",
+  "cos_to_target": 0.663,
+  "twin": 0.787,
+  "twin_title": "Increasing Interoperability Between Bitcoin’s Second-Layer Protocols",
+  "closer": 0.4239,
+  "lands": [
+   0.3667,
+   -0.1297
+  ],
+  "in_hole": false,
+  "too_close": true,
+  "ok": false,
+  "score": 0.2696
+ },
+ {
+  "hole": 3,
+  "title": "Funding the Bridges: What Cross-Layer Bitcoin Infrastructure Still Needs",
+  "cos_to_target": 0.658,
+  "twin": 0.707,
+  "twin_title": "Increasing Interoperability Between Bitcoin’s Second-Layer Protocols",
+  "closer": 0.7373,
+  "lands": [
+   0.3016,
+   -0.1164
+  ],
+  "in_hole": false,
+  "too_close": false,
+  "ok": false,
+  "score": 0.3044
+ },
+ {
+  "hole": 4,
+  "title": "Clear Signing for Simplicity: Teaching a Hardware Wallet to Read Contracts",
+  "cos_to_target": 0.627,
+  "twin": 0.734,
+  "twin_title": "Welcome to the New Simplicity | Blockstream",
+  "closer": 0.6448,
+  "lands": [
+   -0.939,
+   -0.3824
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4601
+ },
+ {
+  "hole": 2,
+  "title": "Lightning for Shops Without Running a Node",
+  "cos_to_target": 0.642,
+  "twin": 0.724,
+  "twin_title": "Enabling Lightning Payments with Liquid Swaps in the Blockstream App",
+  "closer": 0.6836,
+  "lands": [
+   0.3517,
+   -0.3881
+  ],
+  "in_hole": true,
+  "too_close": false,
+  "ok": true,
+  "score": 0.4801
+ },
+ {
+  "hole": 2,
+  "title": "Inbound Liquidity on Demand: Hosted Nodes That Swap Instead of Asking",
+  "cos_to_target": 0.539,
+  "twin": 0.641,
+  "twin_title": "Lightning’s Missing Piece: A Decentralized Liquidity Market",
+  "closer": 0.9075,
+  "lands": [
+   0.4444,
+   -0.4495
+  ],
+  "in_hole": false,
+  "too_close": false,
+  "ok": false,
+  "score": 0.2186
+ }
+]

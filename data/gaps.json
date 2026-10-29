@@ -1,0 +1,741 @@
+[
+ {
+  "hole": 0,
+  "name": "Void below Covenants & Elements",
+  "seen_at_px": [
+   905,
+   640
+  ],
+  "rank": 2,
+  "also_top_algorithmic": true,
+  "surrounded": false,
+  "center": [
+   -0.0669,
+   -0.466
+  ],
+  "radius": 0.377,
+  "topics": [
+   "Covenants & OP_CAT",
+   "Elements",
+   "Lightning Apps & Infra",
+   "Liquid Assets"
+  ],
+  "coherence": 0.513,
+  "ingredients": [
+   {
+    "i": 201,
+    "title": "Use Smart Contracts on Liquid to Deploy Financial Products",
+    "topic": "Liquid Assets",
+    "sim_to_target": 0.673
+   },
+   {
+    "i": 238,
+    "title": "Before They Were Cool: Covenants in Production on Liquid",
+    "topic": "Covenants & OP_CAT",
+    "sim_to_target": 0.673
+   },
+   {
+    "i": 224,
+    "title": "Greenlight by Blockstream: infrastruttura Lightning non-custodial e scalabile ora aperta agli sviluppatori",
+    "topic": "Lightning Apps & Infra",
+    "sim_to_target": 0.673
+   },
+   {
+    "i": 223,
+    "title": "Greenlight by Blockstream: Scalable, Non-Custodial Lightning Infrastructure Now Open to Developers",
+    "topic": "Lightning Apps & Infra",
+    "sim_to_target": 0.669
+   },
+   {
+    "i": 18,
+    "title": "Covenants in Elements Alpha",
+    "topic": "Covenants & OP_CAT",
+    "sim_to_target": 0.671
+   },
+   {
+    "i": 265,
+    "title": "Confidentiality Made Affordable: ELIP 200 Unlocks up to 90% Lower Fees on Liquid",
+    "topic": "Elements",
+    "sim_to_target": 0.669
+   }
+  ],
+  "blend_twin": 0.824,
+  "target_twin": 0.673,
+  "target_closer": 0.8448,
+  "target_cos_blend": 0.871,
+  "target_lands_at": [
+   -0.0172,
+   -0.1984
+  ],
+  "lands_in_hole": true,
+  "nearest": [
+   {
+    "i": 224,
+    "sim": 0.673,
+    "title": "Greenlight by Blockstream: infrastruttura Lightning non-custodial e scalabile ora aperta agli sviluppatori"
+   },
+   {
+    "i": 238,
+    "sim": 0.673,
+    "title": "Before They Were Cool: Covenants in Production on Liquid"
+   },
+   {
+    "i": 201,
+    "sim": 0.673,
+    "title": "Use Smart Contracts on Liquid to Deploy Financial Products"
+   },
+   {
+    "i": 18,
+    "sim": 0.671,
+    "title": "Covenants in Elements Alpha"
+   },
+   {
+    "i": 223,
+    "sim": 0.669,
+    "title": "Greenlight by Blockstream: Scalable, Non-Custodial Lightning Infrastructure Now Open to Developers"
+   },
+   {
+    "i": 265,
+    "sim": 0.669,
+    "title": "Confidentiality Made Affordable: ELIP 200 Unlocks up to 90% Lower Fees on Liquid"
+   },
+   {
+    "i": 236,
+    "sim": 0.622,
+    "title": "Greenlight Is Now Open for Business"
+   },
+   {
+    "i": 258,
+    "sim": 0.599,
+    "title": "Elements 23.2.3: Discounted Fees for Confidential Transactions"
+   },
+   {
+    "i": 213,
+    "sim": 0.596,
+    "title": "Elements 22.1: Native Liquid Testnet"
+   },
+   {
+    "i": 158,
+    "sim": 0.588,
+    "title": "Greenlight by Blockstream: Lightning Made Easy"
+   }
+  ],
+  "lean_tags": [
+   "Elements",
+   "Liquid Network",
+   "Blockstream Research",
+   "Blockstream app",
+   "Lightning Network",
+   "Simplicity Language"
+  ]
+ },
+ {
+  "hole": 1,
+  "name": "Pocket between Green, Signatures & Federations",
+  "seen_at_px": [
+   680,
+   430
+  ],
+  "rank": 40,
+  "also_top_algorithmic": true,
+  "surrounded": true,
+  "center": [
+   -0.3103,
+   0.0556
+  ],
+  "radius": 0.0895,
+  "topics": [
+   "Covenants & OP_CAT",
+   "Federations & Security",
+   "Green Wallet",
+   "Signatures & Post-Quantum"
+  ],
+  "coherence": 0.584,
+  "ingredients": [
+   {
+    "i": 260,
+    "title": "Bitcoin's Shielded CSV Protocol Explained",
+    "topic": "Federations & Security",
+    "sim_to_target": 0.695
+   },
+   {
+    "i": 6,
+    "title": "Gregory Maxwell talks at SF Bitcoin Devs Meetup",
+    "topic": "Federations & Security",
+    "sim_to_target": 0.695
+   },
+   {
+    "i": 186,
+    "title": "ROAST: Robust Asynchronous Schnorr Threshold Signatures",
+    "topic": "Signatures & Post-Quantum",
+    "sim_to_target": 0.695
+   },
+   {
+    "i": 40,
+    "title": "Bulletproofs: Faster Rangeproofs and Much More",
+    "topic": "Covenants & OP_CAT",
+    "sim_to_target": 0.695
+   },
+   {
+    "i": 136,
+    "title": "MuSig2: Simple Two-Round Schnorr Multisignatures",
+    "topic": "Signatures & Post-Quantum",
+    "sim_to_target": 0.694
+   },
+   {
+    "i": 174,
+    "title": "Blockstream Green: Primed for Taproot Activation",
+    "topic": "Green Wallet",
+    "sim_to_target": 0.696
+   }
+  ],
+  "blend_twin": 0.849,
+  "target_twin": 0.696,
+  "target_closer": 0.7642,
+  "target_cos_blend": 0.86,
+  "target_lands_at": [
+   -0.3451,
+   0.0347
+  ],
+  "lands_in_hole": true,
+  "nearest": [
+   {
+    "i": 174,
+    "sim": 0.696,
+    "title": "Blockstream Green: Primed for Taproot Activation"
+   },
+   {
+    "i": 40,
+    "sim": 0.695,
+    "title": "Bulletproofs: Faster Rangeproofs and Much More"
+   },
+   {
+    "i": 260,
+    "sim": 0.695,
+    "title": "Bitcoin's Shielded CSV Protocol Explained"
+   },
+   {
+    "i": 6,
+    "sim": 0.695,
+    "title": "Gregory Maxwell talks at SF Bitcoin Devs Meetup"
+   },
+   {
+    "i": 186,
+    "sim": 0.695,
+    "title": "ROAST: Robust Asynchronous Schnorr Threshold Signatures"
+   },
+   {
+    "i": 136,
+    "sim": 0.694,
+    "title": "MuSig2: Simple Two-Round Schnorr Multisignatures"
+   },
+   {
+    "i": 256,
+    "sim": 0.607,
+    "title": "The Key to FROST: What is Distributed Key Generation?"
+   },
+   {
+    "i": 176,
+    "sim": 0.606,
+    "title": "PSET: Constructing Confidential Transactions"
+   },
+   {
+    "i": 129,
+    "sim": 0.604,
+    "title": "MuSig-DN: Schnorr Multisignatures with Verifiably Deterministic Nonces"
+   },
+   {
+    "i": 241,
+    "sim": 0.604,
+    "title": "MuSig2 is Ready Pending Two New BIPs: Introducing a New Era of Multisig Privacy"
+   }
+  ],
+  "lean_tags": [
+   "Blockstream Research",
+   "Blockstream app",
+   "Company",
+   "Quarterly Update",
+   "Elements",
+   "Lightning Network"
+  ]
+ },
+ {
+  "hole": 2,
+  "name": "Strip between Liquid Assets & Lightning",
+  "seen_at_px": [
+   1080,
+   630
+  ],
+  "rank": 13,
+  "also_top_algorithmic": true,
+  "surrounded": true,
+  "center": [
+   0.2753,
+   -0.3305
+  ],
+  "radius": 0.1256,
+  "topics": [
+   "Lightning Apps & Infra",
+   "Satellite & Company News"
+  ],
+  "coherence": 0.659,
+  "ingredients": [
+   {
+    "i": 223,
+    "title": "Greenlight by Blockstream: Scalable, Non-Custodial Lightning Infrastructure Now Open to Developers",
+    "topic": "Lightning Apps & Infra",
+    "sim_to_target": 0.755
+   },
+   {
+    "i": 298,
+    "title": "On-Chain Swaps and Lightning Come to the Blockstream Desktop App",
+    "topic": "Lightning Apps & Infra",
+    "sim_to_target": 0.755
+   },
+   {
+    "i": 324,
+    "title": "Announcing Blockstream Swaps",
+    "topic": "Satellite & Company News",
+    "sim_to_target": 0.756
+   }
+  ],
+  "blend_twin": 0.896,
+  "target_twin": 0.756,
+  "target_closer": 0.5701,
+  "target_cos_blend": 0.859,
+  "target_lands_at": [
+   0.2857,
+   -0.3331
+  ],
+  "lands_in_hole": true,
+  "nearest": [
+   {
+    "i": 324,
+    "sim": 0.756,
+    "title": "Announcing Blockstream Swaps"
+   },
+   {
+    "i": 298,
+    "sim": 0.755,
+    "title": "On-Chain Swaps and Lightning Come to the Blockstream Desktop App"
+   },
+   {
+    "i": 223,
+    "sim": 0.755,
+    "title": "Greenlight by Blockstream: Scalable, Non-Custodial Lightning Infrastructure Now Open to Developers"
+   },
+   {
+    "i": 288,
+    "sim": 0.661,
+    "title": "Enabling Lightning Payments with Liquid Swaps in the Blockstream App"
+   },
+   {
+    "i": 224,
+    "sim": 0.657,
+    "title": "Greenlight by Blockstream: infrastruttura Lightning non-custodial e scalabile ora aperta agli sviluppatori"
+   },
+   {
+    "i": 236,
+    "sim": 0.64,
+    "title": "Greenlight Is Now Open for Business"
+   },
+   {
+    "i": 158,
+    "sim": 0.619,
+    "title": "Greenlight by Blockstream: Lightning Made Easy"
+   },
+   {
+    "i": 327,
+    "sim": 0.617,
+    "title": "Blockstream App 3.5.0: Lightning in Beta on Desktop"
+   },
+   {
+    "i": 181,
+    "sim": 0.615,
+    "title": "Lightning Platform Breez to Integrate Greenlight"
+   },
+   {
+    "i": 284,
+    "sim": 0.598,
+    "title": "Blockstream Quarterly Update - Q3 2025"
+   }
+  ],
+  "lean_tags": [
+   "Lightning Network",
+   "Blockstream app",
+   "Company",
+   "Layer-2 Report",
+   "Quarterly Update",
+   "Liquid Network"
+  ]
+ },
+ {
+  "hole": 3,
+  "name": "Gap between Explorer, Liquid & the data-feed island",
+  "seen_at_px": [
+   1050,
+   360
+  ],
+  "rank": 26,
+  "also_top_algorithmic": true,
+  "surrounded": true,
+  "center": [
+   0.3732,
+   0.0986
+  ],
+  "radius": 0.1662,
+  "topics": [
+   "Core Lightning",
+   "Federations & Security",
+   "Liquid Federation",
+   "Satellite & Company News"
+  ],
+  "coherence": 0.516,
+  "ingredients": [
+   {
+    "i": 308,
+    "title": "Liquid Network Roadmap: 0-Conf, Quantum Readiness and BitVM",
+    "topic": "Liquid Federation",
+    "sim_to_target": 0.668
+   },
+   {
+    "i": 205,
+    "title": "Build On L2: The Community for Bitcoin Builders",
+    "topic": "Satellite & Company News",
+    "sim_to_target": 0.665
+   },
+   {
+    "i": 73,
+    "title": "Minisketch: Reducing Bitcoin Node Bandwidth Requirements",
+    "topic": "Federations & Security",
+    "sim_to_target": 0.654
+   },
+   {
+    "i": 121,
+    "title": "Liquid Ventures Now Taking Applications",
+    "topic": "Liquid Federation",
+    "sim_to_target": 0.658
+   },
+   {
+    "i": 227,
+    "title": "Increasing Interoperability Between Bitcoin’s Second-Layer Protocols",
+    "topic": "Federations & Security",
+    "sim_to_target": 0.667
+   },
+   {
+    "i": 192,
+    "title": "Layer-2 Roundup: A Fuji.Money Deep Dive",
+    "topic": "Core Lightning",
+    "sim_to_target": 0.671
+   }
+  ],
+  "blend_twin": 0.856,
+  "target_twin": 0.671,
+  "target_closer": 0.8537,
+  "target_cos_blend": 0.86,
+  "target_lands_at": [
+   0.3369,
+   0.0254
+  ],
+  "lands_in_hole": true,
+  "nearest": [
+   {
+    "i": 192,
+    "sim": 0.671,
+    "title": "Layer-2 Roundup: A Fuji.Money Deep Dive"
+   },
+   {
+    "i": 308,
+    "sim": 0.668,
+    "title": "Liquid Network Roadmap: 0-Conf, Quantum Readiness and BitVM"
+   },
+   {
+    "i": 227,
+    "sim": 0.667,
+    "title": "Increasing Interoperability Between Bitcoin’s Second-Layer Protocols"
+   },
+   {
+    "i": 205,
+    "sim": 0.665,
+    "title": "Build On L2: The Community for Bitcoin Builders"
+   },
+   {
+    "i": 121,
+    "sim": 0.658,
+    "title": "Liquid Ventures Now Taking Applications"
+   },
+   {
+    "i": 73,
+    "sim": 0.654,
+    "title": "Minisketch: Reducing Bitcoin Node Bandwidth Requirements"
+   },
+   {
+    "i": 87,
+    "sim": 0.632,
+    "title": "The Bitcoin Games: Liquid Hackathon"
+   },
+   {
+    "i": 209,
+    "sim": 0.618,
+    "title": "BOL2, Simplicity Smart Contracts & CLN v22.11"
+   },
+   {
+    "i": 189,
+    "sim": 0.612,
+    "title": "Specter’s Liquid Issuer, ROAST & Latest Release in Lightning"
+   },
+   {
+    "i": 72,
+    "sim": 0.602,
+    "title": "Blockstream 2018 Review: Countdown to Ignition"
+   }
+  ],
+  "lean_tags": [
+   "Layer-2 Report",
+   "Liquid Network",
+   "Company",
+   "Quarterly Update",
+   "Elements",
+   "Lightning Network"
+  ]
+ },
+ {
+  "hole": 4,
+  "name": "Edge between Simplicity & Signatures",
+  "seen_at_px": [
+   420,
+   610
+  ],
+  "rank": 21,
+  "also_top_algorithmic": true,
+  "surrounded": true,
+  "center": [
+   -0.7189,
+   -0.2703
+  ],
+  "radius": 0.2686,
+  "topics": [
+   "Signatures & Post-Quantum",
+   "Simplicity"
+  ],
+  "coherence": 0.471,
+  "ingredients": [
+   {
+    "i": 323,
+    "title": "Searching for SHRINCS Parameters",
+    "topic": "Signatures & Post-Quantum",
+    "sim_to_target": 0.675
+   },
+   {
+    "i": 326,
+    "title": "Are Hardware Wallets Ready to Produce Post-Quantum Signatures?",
+    "topic": "Signatures & Post-Quantum",
+    "sim_to_target": 0.676
+   },
+   {
+    "i": 278,
+    "title": "Simplicity Launches on Liquid Mainnet",
+    "topic": "Simplicity",
+    "sim_to_target": 0.671
+   },
+   {
+    "i": 259,
+    "title": "Simplicity Arrives on Liquid Testnet",
+    "topic": "Simplicity",
+    "sim_to_target": 0.672
+   }
+  ],
+  "blend_twin": 0.841,
+  "target_twin": 0.676,
+  "target_closer": 0.8358,
+  "target_cos_blend": 0.867,
+  "target_lands_at": [
+   -0.9091,
+   -0.3528
+  ],
+  "lands_in_hole": true,
+  "nearest": [
+   {
+    "i": 326,
+    "sim": 0.676,
+    "title": "Are Hardware Wallets Ready to Produce Post-Quantum Signatures?"
+   },
+   {
+    "i": 323,
+    "sim": 0.675,
+    "title": "Searching for SHRINCS Parameters"
+   },
+   {
+    "i": 259,
+    "sim": 0.672,
+    "title": "Simplicity Arrives on Liquid Testnet"
+   },
+   {
+    "i": 278,
+    "sim": 0.671,
+    "title": "Simplicity Launches on Liquid Mainnet"
+   },
+   {
+    "i": 318,
+    "sim": 0.594,
+    "title": "Welcome to the New Simplicity | Blockstream"
+   },
+   {
+    "i": 311,
+    "sim": 0.593,
+    "title": "OP_CHECKSHRINCS: A Hash-Based Signature Opcode for Post-Quantum Bitcoin"
+   },
+   {
+    "i": 30,
+    "sim": 0.588,
+    "title": "Simplicity Itself for Blockchains"
+   },
+   {
+    "i": 295,
+    "sim": 0.588,
+    "title": "Blockstream Research Demonstrates Quantum-Resistant Transaction Signing on Liquid Using Simplicity Smart Contracts"
+   },
+   {
+    "i": 300,
+    "sim": 0.578,
+    "title": "SHRIMPS: 2.5 KB post-quantum signatures across multiple stateful devices"
+   },
+   {
+    "i": 321,
+    "sim": 0.575,
+    "title": "Building on Simplicity: What Ships Today, What's Coming Next"
+   }
+  ],
+  "lean_tags": [
+   "Quantum",
+   "Blockstream Research",
+   "Simplicity Language",
+   "Quarterly Update",
+   "Liquid Network",
+   "Blockstream Jade"
+  ]
+ },
+ {
+  "hole": 5,
+  "name": "Gap between Jade & Green Wallet",
+  "seen_at_px": [
+   600,
+   215
+  ],
+  "rank": 30,
+  "also_top_algorithmic": false,
+  "surrounded": false,
+  "center": [
+   -0.4595,
+   0.4843
+  ],
+  "radius": 0.0832,
+  "topics": [
+   "Green Wallet",
+   "Jade Hardware",
+   "Satellite & Company News"
+  ],
+  "coherence": 0.665,
+  "ingredients": [
+   {
+    "i": 306,
+    "title": "Introducing Jade Core: Your First Step to Bitcoin Self-Custody",
+    "topic": "Jade Hardware",
+    "sim_to_target": 0.746
+   },
+   {
+    "i": 184,
+    "title": "Blockstream Jade Tech Overview Part 1",
+    "topic": "Jade Hardware",
+    "sim_to_target": 0.743
+   },
+   {
+    "i": 292,
+    "title": "Blockstream Desktop App 3.0.0: Less Friction, More Clarity",
+    "topic": "Satellite & Company News",
+    "sim_to_target": 0.748
+   },
+   {
+    "i": 277,
+    "title": "Blockstream Local: Now Powered by the Blockstream App",
+    "topic": "Satellite & Company News",
+    "sim_to_target": 0.748
+   },
+   {
+    "i": 274,
+    "title": "Introducing the Blockstream App: The Bitcoin Wallet That Grows With You",
+    "topic": "Green Wallet",
+    "sim_to_target": 0.747
+   }
+  ],
+  "blend_twin": 0.898,
+  "target_twin": 0.748,
+  "target_closer": 0.603,
+  "target_cos_blend": 0.873,
+  "target_lands_at": [
+   -0.4373,
+   0.485
+  ],
+  "lands_in_hole": true,
+  "nearest": [
+   {
+    "i": 277,
+    "sim": 0.748,
+    "title": "Blockstream Local: Now Powered by the Blockstream App"
+   },
+   {
+    "i": 292,
+    "sim": 0.748,
+    "title": "Blockstream Desktop App 3.0.0: Less Friction, More Clarity"
+   },
+   {
+    "i": 274,
+    "sim": 0.747,
+    "title": "Introducing the Blockstream App: The Bitcoin Wallet That Grows With You"
+   },
+   {
+    "i": 306,
+    "sim": 0.746,
+    "title": "Introducing Jade Core: Your First Step to Bitcoin Self-Custody"
+   },
+   {
+    "i": 184,
+    "sim": 0.743,
+    "title": "Blockstream Jade Tech Overview Part 1"
+   },
+   {
+    "i": 190,
+    "sim": 0.699,
+    "title": "Learn Self-Custody and Coin Control"
+   },
+   {
+    "i": 138,
+    "sim": 0.696,
+    "title": "Secure Your Bitcoin and Liquid Assets With Blockstream Jade"
+   },
+   {
+    "i": 264,
+    "sim": 0.693,
+    "title": "Introducing the All-New Blockstream Jade Plus: Simple Enough for Beginners, Advanced Enough for Cypherpunks"
+   },
+   {
+    "i": 188,
+    "sim": 0.684,
+    "title": "Blockstream Green: Bitcoin Self-Custody"
+   },
+   {
+    "i": 216,
+    "sim": 0.664,
+    "title": "Blockstream Green Beta Now Open"
+   }
+  ],
+  "lean_tags": [
+   "Blockstream Jade",
+   "Blockstream app",
+   "Company",
+   "Quarterly Update",
+   "Blockstream Research",
+   "Liquid Network"
+  ]
+ }
+]

@@ -11,7 +11,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from common import DATA, RAW, SITE
+from common import DATA, RAW, SITE, place
 
 N_CLUSTERS = 14
 K_NEIGHBORS = 8
@@ -102,7 +102,7 @@ def main():
     gpath, gvec = DATA / "ghosts.json", DATA / "ghost_embeddings.npy"
     if gpath.exists() and gvec.exists():
         G = np.load(gvec)
-        gxy = (reducer.transform(G) - center) / scale
+        gxy = place(reducer, G, {"center": center, "scale": scale})
         for gi, g in enumerate(json.load(open(gpath))):
             sims = X @ G[gi]
             order = np.argsort(-sims)[:K_NEIGHBORS]

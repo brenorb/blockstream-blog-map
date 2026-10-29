@@ -1,0 +1,213 @@
+[
+ {
+  "id": "idea-1",
+  "region": "Void below Covenants & Elements",
+  "title": "Smart Contracts as Lightning Endpoints: Paying Liquid Contracts over Lightning",
+  "description": "Liquid smart contracts can hold funds under covenant rules, but paying into one requires a Liquid wallet. We outline how a Lightning invoice can settle straight into a covenant-controlled contract on Liquid.",
+  "lede": "Financial products on Liquid, such as options, loans and escrow, live in covenant-controlled outputs. Their users mostly live on Lightning. Today, joining a contract means moving to a Liquid wallet first. We sketch an endpoint pattern where a Lightning payment settles directly into a contract output: a swap service pays into a covenant whose script binds the contract terms to the preimage of the Lightning invoice. If the swap provider fails, the covenant refunds itself. We cover the script template, fee overhead, confidentiality, and which contracts fit this pattern.",
+  "tags": [
+   "Liquid Network",
+   "Lightning Network",
+   "Elements"
+  ],
+  "why": "Liquid contracts and Lightning payments are separate stories on the blog. This makes a Lightning invoice the front door to a Liquid covenant contract.",
+  "ingredients": [
+   201,
+   238,
+   224,
+   223,
+   18,
+   265
+  ],
+  "ingredient_sims": {
+   "201": 0.685,
+   "238": 0.656,
+   "224": 0.547,
+   "223": 0.581,
+   "18": 0.532,
+   "265": 0.56
+  },
+  "hole": {
+   "x": -0.0669,
+   "y": -0.466,
+   "r": 0.377
+  },
+  "cos_to_target": 0.659,
+  "candidates_tried": 3,
+  "method": "Hole of radius 0.38 seen in the map screenshot between Covenants & OP_CAT, Elements, Lightning Apps & Infra, Liquid Assets. Blended 6 posts from its rim, then pushed the blend away from all 335 posts on the 1024-dim sphere (nearest-post similarity 0.82 → 0.67). Wrote 3 candidate posts for that point, embedded each with the same model, and kept the one closest to the target (cosine 0.66) that lands in the hole and is not a near copy."
+ },
+ {
+  "id": "idea-2",
+  "region": "Pocket between Green, Signatures & Federations",
+  "title": "Hiding the Policy and the Amount: Designing a Fully Private Taproot Wallet",
+  "description": "Taproot can hide a multisig policy and confidential transactions can hide amounts, but no everyday wallet combines both. We look at the research pieces, from key aggregation and threshold signing to range proofs and client-side validation, and how a wallet could put them together.",
+  "lede": "Privacy in Bitcoin has two halves. One is who controls coins and under what rules; the other is how much moves. Research has produced tools for both. Key aggregation and threshold signatures make a 2-of-3 wallet look like a single key. Range proofs, made practical by Bulletproofs, hide amounts on Liquid. Newer ideas like client-side validation and shielded protocols go further and take transaction data off-chain. What is missing is a wallet that treats these as one design. This post sketches that wallet: which pieces work on Bitcoin today, which only work on Liquid, which still need a soft fork, and what the user would see at each step. We end with an honest list of the trade-offs: bigger proofs, interactive signing, and harder backups.",
+  "tags": [
+   "Blockstream Research",
+   "Blockstream app",
+   "Privacy"
+  ],
+  "why": "The blog has each privacy primitive in its own post. A wallet design that composes them is the missing piece.",
+  "ingredients": [
+   260,
+   6,
+   186,
+   40,
+   136,
+   174
+  ],
+  "ingredient_sims": {
+   "260": 0.602,
+   "6": 0.626,
+   "186": 0.668,
+   "40": 0.563,
+   "136": 0.654,
+   "174": 0.669
+  },
+  "hole": {
+   "x": -0.3103,
+   "y": 0.0556,
+   "r": 0.0895
+  },
+  "cos_to_target": 0.673,
+  "candidates_tried": 4,
+  "method": "Hole of radius 0.09 seen in the map screenshot between Covenants & OP_CAT, Federations & Security, Green Wallet, Signatures & Post-Quantum. Blended 6 posts from its rim, then pushed the blend away from all 335 posts on the 1024-dim sphere (nearest-post similarity 0.85 → 0.70). Wrote 4 candidate posts for that point, embedded each with the same model, and kept the one closest to the target (cosine 0.67) that lands in the hole and is not a near copy."
+ },
+ {
+  "id": "idea-3",
+  "region": "Strip between Liquid Assets & Lightning",
+  "title": "Lightning for Shops Without Running a Node",
+  "description": "Small merchants want Lightning payments but not a node to babysit. We sketch a setup where a hosted, non-custodial Lightning node takes payments and swaps automatically sweep the day's takings to Liquid or on-chain savings the merchant controls.",
+  "lede": "A café that wants to accept Lightning faces an awkward choice. Running its own node means channels, liquidity and backups. A custodial service means trusting someone else with the till. Hosted non-custodial infrastructure sits in between: the node runs in the cloud, but the keys stay on the merchant's device. The remaining problem is what to do with the money at the end of the day. Swaps answer that. Each evening, the wallet can move the day's Lightning balance into Liquid bitcoin for low-fee storage, or on-chain for long-term savings, without a custodian in the middle and without closing channels. We walk through the setup from the merchant's point of view, the fees involved for a shop taking a few hundred payments a week, and what happens if the hosting or swap provider goes offline.",
+  "tags": [
+   "Lightning Network",
+   "Blockstream app",
+   "Liquid Network",
+   "Swaps"
+  ],
+  "why": "Hosted Lightning and swaps are each announced on the blog for developers and individual users. A merchant workflow that combines them is not covered.",
+  "ingredients": [
+   223,
+   298,
+   324
+  ],
+  "ingredient_sims": {
+   "223": 0.692,
+   "298": 0.655,
+   "324": 0.67
+  },
+  "hole": {
+   "x": 0.2753,
+   "y": -0.3305,
+   "r": 0.1256
+  },
+  "cos_to_target": 0.642,
+  "candidates_tried": 5,
+  "method": "Hole of radius 0.13 seen in the map screenshot between Lightning Apps & Infra, Satellite & Company News. Blended 3 posts from its rim, then pushed the blend away from all 335 posts on the 1024-dim sphere (nearest-post similarity 0.90 → 0.76). Wrote 5 candidate posts for that point, embedded each with the same model, and kept the one closest to the target (cosine 0.64) that lands in the hole and is not a near copy."
+ },
+ {
+  "id": "idea-4",
+  "region": "Gap between Explorer, Liquid & the data-feed island",
+  "title": "An Interop Scorecard for Bitcoin Layers",
+  "description": "Every Bitcoin layer claims to be fast, cheap and trust-minimized. We propose a scorecard that measures exit time, peg costs, trust assumptions and cross-layer routes the same way for all of them.",
+  "lede": "Comparisons between Bitcoin layers usually come from the teams that build them. We propose measuring them the same way instead: how long until a user can exit to the base chain without permission, what a round trip costs in fees, who can freeze or censor funds, and which other layers can be reached directly. We fill in the scorecard for Liquid, Lightning and two other layers using public data, and publish the method so anyone can extend it.",
+  "tags": [
+   "Layer-2 Report",
+   "Liquid Network",
+   "Lightning Network"
+  ],
+  "why": "The Layer-2 posts profile one project at a time. A common yardstick across layers is absent.",
+  "ingredients": [
+   308,
+   205,
+   73,
+   121,
+   227,
+   192
+  ],
+  "ingredient_sims": {
+   "308": 0.559,
+   "205": 0.54,
+   "73": 0.424,
+   "121": 0.386,
+   "227": 0.659,
+   "192": 0.629
+  },
+  "hole": {
+   "x": 0.3732,
+   "y": 0.0986,
+   "r": 0.1662
+  },
+  "cos_to_target": 0.538,
+  "candidates_tried": 5,
+  "method": "Hole of radius 0.17 seen in the map screenshot between Core Lightning, Federations & Security, Liquid Federation, Satellite & Company News. Blended 6 posts from its rim, then pushed the blend away from all 335 posts on the 1024-dim sphere (nearest-post similarity 0.86 → 0.67). Wrote 5 candidate posts for that point, embedded each with the same model, and kept the one closest to the target (cosine 0.54) that lands in the hole and is not a near copy."
+ },
+ {
+  "id": "idea-5",
+  "region": "Edge between Simplicity & Signatures",
+  "title": "Clear Signing for Simplicity: Teaching a Hardware Wallet to Read Contracts",
+  "description": "Hardware wallets can already compute post-quantum signatures, and Simplicity is live on Liquid. The gap is that a device signing a Simplicity spend cannot show the user what the contract does. We sketch how a hardware wallet could display a Simplicity program in human terms.",
+  "lede": "A hardware wallet's job is to show you what you are signing. For a normal payment that is an address and an amount. For a Simplicity contract it might be a vault, an option, or a post-quantum spending policy, and today the device shows little more than a hash. Simplicity programs are small, typed and have precise semantics, which makes them unusually suitable for on-device analysis. We sketch how a hardware wallet with limited memory could recognize common contract templates, check the parameters, and display them in plain words, and we measure how much memory and time that takes compared with the signing itself, including hash-based post-quantum signatures.",
+  "tags": [
+   "Simplicity Language",
+   "Blockstream Jade",
+   "Quantum"
+  ],
+  "why": "Post-quantum benchmarks on hardware wallets and Simplicity contracts are both on the blog, but nothing covers how a device would show a user what a Simplicity contract does.",
+  "ingredients": [
+   323,
+   326,
+   278,
+   259
+  ],
+  "ingredient_sims": {
+   "323": 0.454,
+   "326": 0.67,
+   "278": 0.629,
+   "259": 0.645
+  },
+  "hole": {
+   "x": -0.7189,
+   "y": -0.2703,
+   "r": 0.2686
+  },
+  "cos_to_target": 0.627,
+  "candidates_tried": 4,
+  "method": "Hole of radius 0.27 seen in the map screenshot between Signatures & Post-Quantum, Simplicity. Blended 4 posts from its rim, then pushed the blend away from all 335 posts on the 1024-dim sphere (nearest-post similarity 0.84 → 0.68). Wrote 4 candidate posts for that point, embedded each with the same model, and kept the one closest to the target (cosine 0.63) that lands in the hole and is not a near copy."
+ },
+ {
+  "id": "idea-6",
+  "region": "Gap between Jade & Green Wallet",
+  "title": "A Self-Custody Workshop in a Box",
+  "description": "Meetups are where many people set up their first wallet. We put together a workshop kit: slides, a Jade setup script, a testnet faucet and a recovery drill, so any organizer can run a hands-on self-custody night.",
+  "lede": "The best time to learn self-custody is with a friend sitting next to you. Local meetups already do this informally. Someone brings a hardware wallet, someone else asks how seed words work, and an hour later three people have backups they do not trust. This post describes a workshop in a box for organizers. It includes a 45-minute agenda, a printed seed card template, a testnet setup for Jade and the app so nobody risks real funds, and a recovery drill where attendees wipe their device and restore it. We also share what we learned from running it with first-timers: which steps confuse people, and which mistakes they make when nobody is watching.",
+  "tags": [
+   "Blockstream Jade",
+   "Blockstream app",
+   "Education"
+  ],
+  "why": "The blog covers new wallets and devices, and separately covers meetups. A practical teaching kit that joins them is missing.",
+  "ingredients": [
+   306,
+   184,
+   292,
+   277,
+   274
+  ],
+  "ingredient_sims": {
+   "306": 0.641,
+   "184": 0.641,
+   "292": 0.477,
+   "277": 0.686,
+   "274": 0.581
+  },
+  "hole": {
+   "x": -0.4595,
+   "y": 0.4843,
+   "r": 0.0832
+  },
+  "cos_to_target": 0.641,
+  "candidates_tried": 3,
+  "method": "Hole of radius 0.08 seen in the map screenshot between Green Wallet, Jade Hardware, Satellite & Company News. Blended 5 posts from its rim, then pushed the blend away from all 335 posts on the 1024-dim sphere (nearest-post similarity 0.90 → 0.75). Wrote 3 candidate posts for that point, embedded each with the same model, and kept the one closest to the target (cosine 0.64) that lands in the hole and is not a near copy."
+ }
+]
